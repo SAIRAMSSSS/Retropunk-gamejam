@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
 
     void Awake()
     {
-        m_playerCamera = GetComponentInChildren<CinemachineCamera>();
-        m_playerCamera.Follow = _player.transform;
+        //m_playerCamera = GetComponentInChildren<CinemachineCamera>();
+        //m_playerCamera.Follow = _player.transform;
     }
 }

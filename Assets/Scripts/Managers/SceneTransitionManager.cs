@@ -8,9 +8,9 @@ public class SceneTransitionManager : MonoBehaviour
     [Inject]
     UIManager _UI;
     float _darkenDuration = 0.8f;
+
     void Start()
     {
-        StartCoroutine(nameof(NextScene), "MainDrag");
     }
 
     void Update()
@@ -22,7 +22,7 @@ public class SceneTransitionManager : MonoBehaviour
     /// </summary>
     /// <param name="sceneName"></param>
     /// <returns></returns>
-    IEnumerator NextScene(string sceneName)
+    public IEnumerator NewScene(string sceneName)
     {
         yield return new WaitForSeconds(5);
         yield return StartCoroutine(DarkenScreen(0, 1));

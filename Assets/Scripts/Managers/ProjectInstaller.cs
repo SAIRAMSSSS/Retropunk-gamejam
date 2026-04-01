@@ -17,10 +17,14 @@ public class ProjectInstaller : MonoInstaller<ProjectInstaller>
     public override void InstallBindings()
     {
         //creates objects that will move between scenes
+        var player = Container.InstantiatePrefab(_playerPrefab);
         Container.Bind<PlayerController>()
-            .FromComponentInNewPrefab(_playerPrefab)
-            .AsSingle()
-            .NonLazy();
+            .FromComponentOn(player)
+            .AsSingle();
+
+        Container.Bind<PlayerInput>()
+            .FromComponentOn(player)
+            .AsSingle();
 
         Container.Bind<SceneTransitionManager>()
             .FromComponentInNewPrefab(_transitionPrefab)
