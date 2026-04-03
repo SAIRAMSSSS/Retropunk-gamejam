@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
     bool _click;
+    bool _doubleClick;
     bool _interact;
     Vector2 _mousePosition;
 
@@ -15,6 +15,19 @@ public class PlayerInput : MonoBehaviour
             if (_click)
             {
                 _click = false;
+                return !_inputLocked;
+            }
+            return false;
+        }
+    }
+
+    public bool DoubleClick
+    {
+        get
+        {
+            if (_doubleClick)
+            {
+                _doubleClick = false;
                 return !_inputLocked;
             }
             return false;
@@ -46,7 +59,6 @@ public class PlayerInput : MonoBehaviour
     /// Enables or disables an interaction with an object and sets an interaction functions
     /// </summary>
     /// <param name="enable"></param>
-    /// <param name="func"></param>
     public void EnableInteraction(bool enable)
     {
         _enableInteraction = enable;
@@ -55,6 +67,11 @@ public class PlayerInput : MonoBehaviour
     public void OnClick(InputValue inputValue)
     {
         _click = inputValue.isPressed;
+    }
+
+    public void OnDoubleClick(InputValue inputValue)
+    {
+        _doubleClick = true;
     }
 
     public void OnMousePosition(InputValue inputValue)

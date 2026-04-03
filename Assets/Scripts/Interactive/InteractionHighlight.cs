@@ -21,14 +21,14 @@ public class InteractionHighlight : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, 100f, LayerMask.GetMask("InteractiveObject")))
         {
             GameObject hitObj = hit.collider.gameObject;
-            //if the cursor touched a new object - outlines it
-            if(_currentObj != hitObj)
+            InteractionObject interactive = hitObj.GetComponent<InteractionObject>();
+
+            //if the cursor touched a new object - outlines it and is interactive now
+            if (_currentObj != hitObj && interactive.CanInteract() && hitObj.TryGetComponent(out _outline))
             {
                 //clears the previous highlight
                 ClearHighlight();
                 _currentObj = hitObj;
-
-                _outline = _currentObj.GetComponent<Outline>();
                 _outline.enabled = true;
             }
         }

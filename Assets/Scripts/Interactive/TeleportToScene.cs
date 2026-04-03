@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-public class TeleportToScene : MonoBehaviour
+public class TeleportToScene : InteractionObject
 {
     [SerializeField]
     string _sceneName;
@@ -9,8 +9,9 @@ public class TeleportToScene : MonoBehaviour
     [Inject]
     SceneTransitionManager _transitionManager;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         _transitionManager = GameObject.Find("SceneTransitionManager").GetComponent<SceneTransitionManager>();
     }
     /// <summary>
@@ -19,5 +20,10 @@ public class TeleportToScene : MonoBehaviour
     public void GoToScene()
     {
         _transitionManager.NewScene(_sceneName);
+    }
+
+    public override bool CanInteract()
+    {
+        return true;
     }
 }

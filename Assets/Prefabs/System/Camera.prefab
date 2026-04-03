@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3725902998253121809}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23871928, y: -0.22461046, z: 0.056857247, w: 0.94304323}
-  m_LocalPosition: {x: 4.9443603, y: 6.66251, z: -13.67764}
+  m_LocalRotation: {x: 0.38927868, y: -0.43052292, z: 0.21325073, w: 0.7858984}
+  m_LocalPosition: {x: 7.3443604, y: 6.88651, z: -6.89599}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -91,11 +91,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineFollow
   TrackerSettings:
     BindingMode: 4
-    PositionDamping: {x: 1, y: 1, z: 1}
+    PositionDamping: {x: 0, y: 0, z: 0}
     AngularDampingMode: 0
-    RotationDamping: {x: 1, y: 1, z: 1}
+    RotationDamping: {x: 1, y: 1, z: 1.12}
     QuaternionDamping: 1
-  FollowOffset: {x: 5.05, y: 6.06, z: -10}
+  FollowOffset: {x: 4.07, y: 6.94, z: -2.6}
 --- !u!114 &3621023496462767594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,8 +118,8 @@ MonoBehaviour:
       Size: {x: 0.8, y: 0.8}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 0.5, y: 0.5}
+  TargetOffset: {x: 0, y: 0.6, z: 0}
+  Damping: {x: 0, y: 0}
   Lookahead:
     Enabled: 0
     Time: 0
@@ -199,8 +199,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8910020853517614723}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23871928, y: -0.22461048, z: 0.056857254, w: 0.94304323}
-  m_LocalPosition: {x: 4.9443603, y: 6.66251, z: -13.67764}
+  m_LocalRotation: {x: 0.3892787, y: -0.43052295, z: 0.21325074, w: 0.7858983}
+  m_LocalPosition: {x: 7.3443604, y: 6.88651, z: -6.89599}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -4,14 +4,14 @@ using UnityEngine;
 public class InteractionUIManager : MonoBehaviour
 {
     [SerializeField]
-    TextMeshProUGUI _interactionCommandText;
+    TextMeshProUGUI _interactiondText;
 
     Canvas _interactionCanvas;
 
-    float _offsetAboveObject = 1.5f;
     bool _show;
-
     Transform _obj;
+
+    float _offset;
 
     void Start()
     {
@@ -23,9 +23,11 @@ public class InteractionUIManager : MonoBehaviour
     {
         if (_show)
         {
-            transform.position = _obj.position + _offsetAboveObject * Vector3.up;
-            _interactionCanvas.transform.LookAt(Camera.main.transform);
-            _interactionCanvas.transform.Rotate(0, 180, 0);
+            transform.position = _obj.position + _offset*Vector3.up;
+            Vector3 direction = Camera.main.transform.position - transform.position;
+            direction.y = 0;
+            transform.rotation = Quaternion.LookRotation(direction);
+            transform.Rotate(0, 180, 0);
         }
     }
     /// <summary>
@@ -33,12 +35,15 @@ public class InteractionUIManager : MonoBehaviour
     /// </summary>
     /// <param name="obj"></param>
     /// <param name="text"></param>
-    public void Show(Transform obj, string text)
+    public void Show(Transform obj, string text, float offset)
     {
         _show = true;
-        _interactionCommandText.gameObject.SetActive(_show);
+        Color color = _interactiondText.color;
+        color.a = 1;
+        _interactiondText.color = color;
         _obj = obj;
-        _interactionCommandText.text = text;
+        _interactiondText.text = text;
+        _offset = offset;
     }
     /// <summary>
     /// Hides the text
@@ -46,7 +51,8 @@ public class InteractionUIManager : MonoBehaviour
     public void Hide()
     {
         _show = false;
-        _interactionCommandText.gameObject.SetActive(_show);
-        _obj = null;
+        Color color = _interactiondText.color;
+        color.a = 0;
+        _interactiondText.color = color; _obj = null;
     }
 }

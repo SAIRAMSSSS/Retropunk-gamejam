@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 using Zenject;
 
 [RequireComponent(typeof(Collider))]
@@ -27,13 +26,25 @@ public class InteractionZone : MonoBehaviour
             CurrentObject = newObj;
             ObjectDetected = true;
             _input.EnableInteraction(true);
-            _interactionUI.Show(newObj.transform, newObj.InteractionText);
+            _interactionUI.Show(newObj.transform, newObj.InteractionText,newObj.InteractionOffset);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        InteractionObject newObj = other.gameObject.GetComponent<InteractionObject>();
+        if (newObj.CanInteract() && CurrentObject == null)
+        {
+            CurrentObject = newObj;
+            ObjectDetected = true;
+            _input.EnableInteraction(true);
+            _interactionUI.Show(newObj.transform, newObj.InteractionText, newObj.InteractionOffset);
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == CurrentObject.gameObject)
+        if (CurrentObject != null && other.gameObject == CurrentObject.gameObject)
         {
             ObjectDetected = false;
             CurrentObject = null;

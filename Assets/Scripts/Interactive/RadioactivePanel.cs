@@ -11,7 +11,6 @@ public class RadioactivePanel : MonoBehaviour
         //teleports the player to the start point when he steps on the panel
         if (other.CompareTag("Player"))
         {
-            other.transform.position = _startPoint.position;
             other.transform.rotation = _startPoint.rotation;
         }
     }

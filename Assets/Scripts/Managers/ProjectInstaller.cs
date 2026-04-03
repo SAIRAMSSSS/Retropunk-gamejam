@@ -13,6 +13,8 @@ public class ProjectInstaller : MonoInstaller<ProjectInstaller>
     GameObject _UIManagerPrefab;
     [SerializeField]
     GameObject _cameraPrefab;
+    [SerializeField]
+    GameObject _interactiveCanvasPrefab;
 
     public override void InstallBindings()
     {
@@ -37,6 +39,11 @@ public class ProjectInstaller : MonoInstaller<ProjectInstaller>
             .FromComponentInNewPrefab(_gameManagerPrefab)
             .WithGameObjectName("GameManager")
             .UnderTransformGroup("Managers")
+            .AsSingle()
+            .NonLazy();
+
+        Container.Bind<InteractionUIManager>()
+            .FromComponentInNewPrefab(_interactiveCanvasPrefab)
             .AsSingle()
             .NonLazy();
 

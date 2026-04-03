@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127dca88665dbca4d8372ef8bd5b42c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectInstaller
-  _playerPrefab: {fileID: 6790537826541330175, guid: 2245515454a6aa24cafa3a1bcdd08ccc, type: 3}
+  _playerPrefab: {fileID: 1934616615026880792, guid: 40e50646760d3f5419f9d42621763231, type: 3}
   _transitionPrefab: {fileID: 7503344194130156350, guid: 39f54b952944a8e47a7b6777629e61a9, type: 3}
   _gameManagerPrefab: {fileID: 7455316745734052530, guid: 9d9b903f294ae4947ba57db82426b3f4, type: 3}
   _UIManagerPrefab: {fileID: 4456018476790531460, guid: 304395dad4f5c5747878d2494599a5b6, type: 3}
   _cameraPrefab: {fileID: 4339021093982580204, guid: ae0740c675ccf054a9972d75ad611b67, type: 3}
+  _interactiveCanvasPrefab: {fileID: 222063133891845785, guid: aedc2250931ab524dabc7b12517d6ad3, type: 3}

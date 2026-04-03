@@ -191,4 +191,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d16f8c1241a94340a3ad7b85f5babef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  _fadeScreen: {fileID: 926377021765025447}
+  _darkenScreen: {fileID: 0}
