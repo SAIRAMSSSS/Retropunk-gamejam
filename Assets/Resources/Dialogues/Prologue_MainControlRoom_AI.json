@@ -1,0 +1,90 @@
+﻿{
+  "dialogueName": "prologue_main_control_room_AI",
+  "phoneCall": false,
+  "lines": [
+    {
+      "speaker": "AI",
+      "text": "Systems Critical. Engine failing at 46%. Life Support Systems at 65% and dropping. Water Supply at 13%. Radiation Shielding Matrix at 52% and dropping.",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Jesus, well can’t you fix it?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "AI",
+      "text": "Negative. Repairs require human intervention.",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Well why the hell aren’t the maintenance teams fixing this, then?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "AI",
+      "text": "Unable to contact maintenance teams. All are presumed dead.",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Are you serious? What on Earth happened?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "AI",
+      "text": "Unknown.",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Well, that’s just a fantastic answer that gets me nowhere. Sigh. Alright, I guess at least give me an idea of what all this means.",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "AI",
+      "text": "Systems critical. If repairs are not made in the next 46 minutes, Flotilla City #7 will be rendered inert or uninhabitable.",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Inert?! You mean the city’s gonna fall out of the sky?!",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "AI",
+      "text": "Affirmative, or uninhabitable.",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "I get it, I get it, you don’t need to repeat yourself.",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "AI",
+      "text": "I was only answering your question.",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Ugh, I hate machines...",
+      "animation": "",
+      "animationLayer": 0
+    }
+  ]
+}

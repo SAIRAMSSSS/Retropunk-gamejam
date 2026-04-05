@@ -1,0 +1,48 @@
+﻿{
+  "dialogueName": "prologue_main_control_room_captain_Dwyer",
+  "phoneCall": true,
+  "lines": [
+    {
+      "speaker": "Macklin",
+      "text": "Cap, the situation is NOT GOOD at all. The whole city is either going to fall out of the sky or become uninhabitable in the next 46 minutes or so.",
+      "animation": "PhoneSpeak",
+      "animationLayer": 2
+    },
+    {
+      "speaker": "Captain Dwyer",
+      "text": "Are you serious?! Macklin, this isn’t good!",
+      "animation": "PhoneListen",
+      "animationLayer": 2
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Tell me something I don’t know, Cap.",
+      "animation": "PhoneSpeak",
+      "animationLayer": 2
+    },
+    {
+      "speaker": "Captain Dwyer",
+      "text": "Macklin, I don’t know any other way around this. You need to get to the maintenance levels that are malfunctioning and figure out what in the hell is going on down there!",
+      "animation": "PhoneListen",
+      "animationLayer": 2
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Me? Cap I haven’t been down to the maintenance levels since I retired. It’s dangerous for me nowadays, I don’t know if my body can even handle it.",
+      "animation": "PhoneSpeak",
+      "animationLayer": 2
+    },
+    {
+      "speaker": "Captain Dwyer",
+      "text": "Look Macklin, you’re the only detective I can get a hold of right now, and you’re the only person I know with experience as a mechanic. It’s either you get down there, or the whole city dies!",
+      "animation": "PhoneListen",
+      "animationLayer": 2
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Ugh, sometimes I wonder why I even took this job... Alright, I’ll go check it out, but I’m not looking forward to this...",
+      "animation": "HeadShake",
+      "animationLayer": 0
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+﻿{
+  "dialogueName": "prologue_apartment",
+  "phoneCall": true,
+  "lines": [
+    {
+      "speaker": "Captain Dwyer",
+      "text": "Macklin? You there?",
+      "animation": "PhoneListen",
+      "animationLayer": 2
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Yeah, I’m here. Did you feel that too boss?",
+      "animation": "PhoneSpeak",
+      "animationLayer": 2
+    },
+    {
+      "speaker": "Captain Dwyer",
+      "text": "Course I did! That’s why I’m calling you!",
+      "animation": "PhoneListen",
+      "animationLayer": 2
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Lemme guess: Mob got mad at the Casino again for not paying their dues?",
+      "animation": "PhoneSpeak",
+      "animationLayer": 2
+    },
+    {
+      "speaker": "Captain Dwyer",
+      "text": "No, much worse. I’m getting reports of catastrophic failures all across the city. This is big, Macklin.",
+      "animation": "PhoneListen",
+      "animationLayer": 2
+    },
+    {
+      "speaker": "Macklin",
+      "text": "...Catastrophic failures? What does that even mean?",
+      "animation": "PhoneSpeak",
+      "animationLayer": 2
+    },
+    {
+      "speaker": "Captain Dwyer",
+      "text": "I don’t know another way to explain this to you Mackin! CITY. WIDE. CATASTROPHIC. FAILURES.",
+      "animation": "PhoneListen",
+      "animationLayer": 2
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Alright, alright, calm down Cap. What do you need me to do?",
+      "animation": "PhoneSpeak",
+      "animationLayer": 2
+    },
+    {
+      "speaker": "Captain Dwyer",
+      "text": "I need you to get to the main control center, figure out what’s going on.",
+      "animation": "PhoneListen",
+      "animationLayer": 2
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Can’t you just radio in there and ask?",
+      "animation": "PhoneSpeak"
+    },
+    {
+      "speaker": "Captain Dwyer",
+      "text": "No one is responding, Macklin! That’s why I’m calling you!",
+      "animation": "PhoneListen",
+      "animationLayer": 2
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Alright, fine, I’ll go check it out. Seems like I can never get a good night’s sleep in this city.",
+      "animation": "PhoneSpeak",
+      "animationLayer": 2
+    },
+    {
+      "speaker": "Captain Dwyer",
+      "text": "Call me with a status report ASAP!",
+      "animation": "PhoneListen",
+      "animationLayer": 2
+    }
+  ]
+}

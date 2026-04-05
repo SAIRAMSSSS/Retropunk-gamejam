@@ -1,0 +1,72 @@
+﻿{
+  "dialogueName": "life_support_room",
+  "phoneCall": false,
+  "lines": [
+    {
+      "speaker": "Macklin",
+      "text": "Hey techie, what on earth is going on here?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Scientist",
+      "text": " ...Life Support...failing...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Yeah, yeah, I get that, but how does it get fixed?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Scientist",
+      "text": "Need to...reset...levers on console...in proper order...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Reset the levers, got it. How do I know what position the levers need to be in?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Scientist",
+      "text": "Listen...to the lights...and levers...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Listen to the lights and levers? That doesn’t make any sense...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Scientist",
+      "text": "Please...just listen...to the lights...and levers...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "I still don’t know what you mean by listen to the lights...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Scientist",
+      "text": "...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Great, he’s out cold. Guess I gotta “listen to the lights”, whatever the hell that means...",
+      "animation": "HeadShake",
+      "animationLayer": 3
+    }
+  ]
+}

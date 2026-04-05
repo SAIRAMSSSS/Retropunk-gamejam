@@ -47,4 +47,16 @@ public class SceneTransitionManager : MonoBehaviour
 
         _UI.SetDarkenScreen(endAlpha);
     }
+    /// <summary>
+    /// Loads new scene and plays the cutscene
+    /// </summary>
+    /// <param name="sceneName"></param>
+    /// <param name="cutsceneName"></param>
+    public void LoadSceneWithCutscene(string sceneName, string cutsceneName)
+    {
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        CutsceneManager cutsceneManager = GameObject.Find("Cutscene").GetComponent<CutsceneManager>();
+        cutsceneManager.SetTimeline(cutsceneName);
+        cutsceneManager.StartCutscene();
+    }
 }

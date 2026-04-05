@@ -1,0 +1,12 @@
+﻿{
+  "dialogueName": "ending_main_drag",
+  "phoneCall": false,
+  "lines": [
+    {
+      "speaker": "Macklin",
+      "text": "Ok, main systems are all fixed, what do I do now? The city still seems on the brink of failure...",
+      "animation": "",
+      "animationLayer": 0
+    }
+  ]
+}

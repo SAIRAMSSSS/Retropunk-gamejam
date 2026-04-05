@@ -50,3 +50,4 @@ MonoBehaviour:
   _UIManagerPrefab: {fileID: 4456018476790531460, guid: 304395dad4f5c5747878d2494599a5b6, type: 3}
   _cameraPrefab: {fileID: 4339021093982580204, guid: ae0740c675ccf054a9972d75ad611b67, type: 3}
   _interactiveCanvasPrefab: {fileID: 222063133891845785, guid: aedc2250931ab524dabc7b12517d6ad3, type: 3}
+  _audioManagerPrefab: {fileID: 4779189377501525578, guid: 9216b0900d38d1041a4d8332d397c155, type: 3}

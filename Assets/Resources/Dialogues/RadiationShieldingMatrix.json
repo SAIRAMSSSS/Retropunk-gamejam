@@ -1,0 +1,72 @@
+﻿  {
+  "dialogueName": "radiation_shielding_matrix",
+  "phoneCall": false,
+  "lines": [
+    {
+      "speaker": "Macklin",
+      "text": "Yo, techie, what’s going on here?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Scientist",
+      "text": "...ugh...radiation is leaking...rapidly...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Alright, how do I stop this?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Scientist",
+      "text": "...there is...a switch...other side...of large room...need to flip it...will reset the matrix...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Alright, you stay here, that seems easy enough...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Scientist",
+      "text": "WAIT! That room...is leaking...radiation everywhere...would kill you if you just walked across it...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "So how the hell am I supposed to get to the other side?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Scientist",
+      "text": "...some panels...are safe…others...too much radiation...you must only walk on...safe panels...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "How do I know which panels are safe and which aren’t?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Scientist",
+      "text": "...check…the monitor...should have...radiation heat map...also…take this...hands Macklin a Geiger Transporter...this…will teleport you…back into safe room...should you step on…wrong panel...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Wow, we definitely didn’t have this technology when I worked this job...",
+      "animation": "",
+      "animationLayer": 0
+    }
+  ]
+}

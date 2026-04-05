@@ -1,0 +1,12 @@
+﻿{
+  "dialogueName": "prologue_main_drag",
+  "phoneCall": false,
+  "lines": [
+    {
+      "speaker": "Macklin",
+      "text": "Jesus, what on earth even happened here?",
+      "animation": "",
+      "animationLayer": 0
+    }
+  ]
+}

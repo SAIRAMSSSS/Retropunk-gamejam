@@ -1,0 +1,36 @@
+﻿{
+  "dialogueName": "ending_main_drag_captain_Dwyer",
+  "phoneCall": true,
+  "lines": [
+    {
+      "speaker": "Captain Dwyer",
+      "text": "Macklin! Did you figure out what was going on? We don’t have much time!",
+      "animation": "PhoneListen",
+      "animationLayer": 2
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Yeah, I got it all fixed Cap, but it still seems like we’re all doomed...",
+      "animation": "PhoneSpeak",
+      "animationLayer": 2
+    },
+    {
+      "speaker": "Captain Dwyer",
+      "text": "Get back to the Main Control Center! You probably need to reboot the entire system!",
+      "animation": "PhoneListen",
+      "animationLayer": 2
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Seriously? There’s another thing I have to do?",
+      "animation": "PhoneSpeak",
+      "animationLayer": 2
+    },
+    {
+      "speaker": "Captain Dwyer",
+      "text": "Quickly, Macklin!",
+      "animation": "PhoneListen",
+      "animationLayer": 2
+    }
+  ]
+}

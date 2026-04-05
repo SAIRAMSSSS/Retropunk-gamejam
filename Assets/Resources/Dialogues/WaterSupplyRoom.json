@@ -1,0 +1,72 @@
+﻿{
+  "dialogueName": "water_supply_room",
+  "phoneCall": false,
+  "lines": [
+    {
+      "speaker": "Macklin",
+      "text": "Hey bud, you alright?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Mechanic",
+      "text": "*cough*...been better...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "What’s going on down here?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Mechanic",
+      "text": "Main water line...busted...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Alright, how does it get fixed?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Mechanic",
+      "text": "...The crane...need to...reconnect water line...with spare pieces...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "So how the hell am I supposed to get to the other side?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Mechanic",
+      "text": "...some panels...are safe…others...too much radiation...you must only walk on...safe panels...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Spare pieces? You mean spare pieces of pipe?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Mechanic",
+      "text": "..yes...use...the crane...please...hurry...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "At least I’m not lifting the pieces myself...",
+      "animation": "HeadShake",
+      "animationLayer": 3
+    }
+  ]
+}

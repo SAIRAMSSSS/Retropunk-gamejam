@@ -11,7 +11,7 @@ public class InteractionHighlight : MonoBehaviour
 
     void Start()
     {
-        _input = GameObject.Find("Player").GetComponent<PlayerInput>();
+        //_input = GameObject.Find("Player").GetComponent<PlayerInput>();
     }
 
     private void Update()

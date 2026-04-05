@@ -1,0 +1,107 @@
+﻿{
+  "dialogueName": "engine_room",
+  "phoneCall": false,
+  "lines": [
+    {
+      "speaker": "Macklin",
+      "text": "Hey! You alright? You breathing?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Mechanic",
+      "text": " ...ugh...barely...",
+      "animation": ""
+    },
+    {
+      "speaker": "Macklin",
+      "text": "What in the hell is going on down here?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Mechanic",
+      "text": "...engines...failing…need...new fuel cells...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "New fuel cells? Where are they?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Mechanic",
+      "text": "...need...six...new...fuel cells...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Ok I get that. Where are they?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Mechanic",
+      "text": "...fuel cells...in both these rooms...need to...get them...on the platforms...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": " Alright, you’re too injured, I can do that...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Mechanic",
+      "text": "WAIT!...*cough cough*...fuel cells...need to be...in the right order...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Of course this wasn’t going to be simple. How do I know what order to put them in?",
+      "animation": "HeadShake",
+      "animationLayer": 3
+    },
+    {
+      "speaker": "Injured Mechanic",
+      "text": "...the monitor...in each room...will tell you…what fuel cell shape...is needed...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Fuel cell shape? What does that even mean?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Mechanic",
+      "text": "...just...look at the monitor closely...and it…will tell you *cough cough* ...pull the lever...once they’re placed...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "And I have to do this for both rooms?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Injured Mechanic",
+      "text": "...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Great, he’s passed out. Guess I gotta figure this one out.",
+      "animation": "",
+      "animationLayer": 0
+    }
+  ]
+}

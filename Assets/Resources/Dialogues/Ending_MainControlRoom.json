@@ -1,0 +1,30 @@
+﻿{
+  "dialogueName": "ending_main_control_room",
+  "phoneCall": false,
+  "lines": [
+    {
+      "speaker": "AI",
+      "text": "All major systems repaired. System wide reboot must be initiated.",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Great, do it now!",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "AI",
+      "text": "Are you sure you wish to initiate a system wide reboot?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "YES! DO IT NOW!",
+      "animation": "",
+      "animationLayer": 0
+    }
+  ]
+}

@@ -9,13 +9,12 @@ public class InteractionZone : MonoBehaviour
 
     [Inject]
     InteractionUIManager _interactionUI;
-    [Inject]
     PlayerInput _input;
 
     void Start()
     {
-        _interactionUI = GameObject.Find("IneractionCanvas").GetComponent<InteractionUIManager>();
-        _input = GameObject.Find("Player").GetComponent<PlayerInput>();
+        // _interactionUI = GameObject.Find("IneractionCanvas").GetComponent<InteractionUIManager>();
+        _input = transform.parent.gameObject.GetComponent<PlayerInput>();
     }
 
     void OnTriggerEnter(Collider other)

@@ -1,0 +1,60 @@
+﻿{
+  "dialogueName": "epilogue",
+  "phoneCall": false,
+  "lines": [
+    {
+      "speaker": "Captain Dwyer",
+      "text": "Macklin? What happened?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "I initiated a system wide reboot like you said. Did it work?",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Captain Dwyer",
+      "text": "Seems so. All the alarms stopped ringing over in my neck of the woods...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Main Control Console seems to be showing good numbers again...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "AI",
+      "text": "em wide reboot successful. All systems nominal.",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Well, there’s your answer right there.",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Captain Dwyer",
+      "text": "Good work, detective. This could have been catastrophic...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Macklin",
+      "text": "Yeah, it could’ve...maybe now I can actually get a good night’s rest...",
+      "animation": "",
+      "animationLayer": 0
+    },
+    {
+      "speaker": "Captain Dwyer",
+      "text": "Hopeful thinking, Macklin. Until next time...",
+      "animation": "",
+      "animationLayer": 0
+    }
+  ]
+}
