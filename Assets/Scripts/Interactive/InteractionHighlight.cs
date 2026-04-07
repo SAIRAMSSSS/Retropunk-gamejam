@@ -9,11 +9,6 @@ public class InteractionHighlight : MonoBehaviour
     GameObject _currentObj;
     Outline _outline;
 
-    void Start()
-    {
-        //_input = GameObject.Find("Player").GetComponent<PlayerInput>();
-    }
-
     private void Update()
     {
         //detects whether the cursor has touched an interactive object

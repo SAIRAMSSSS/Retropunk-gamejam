@@ -4,8 +4,6 @@ using Zenject;
 
 public class PlayerSpawner : MonoBehaviour
 {
-    [SerializeField]
-    string[] _sceneNames;
     [Inject]
     PlayerInput _player;
 
@@ -14,12 +12,11 @@ public class PlayerSpawner : MonoBehaviour
         SetSpawnPoint(transform);
     }
     /// <summary>
-    /// Sets a player position when he exits a certain scene
+    /// Sets a player position when they exit a certain level
     /// </summary>
-    /// <param name="fromScene"></param>
-    public void SetPlayerSpawnPosition(string fromScene)
+    public void SetPlayerSpawnPosition(int fromLevelNum)
     {
-        Transform spawnPoint = transform.GetChild(_sceneNames.IndexOf(fromScene));
+        Transform spawnPoint = transform.GetChild(fromLevelNum - 1);
         SetSpawnPoint(spawnPoint);
     }
 

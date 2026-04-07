@@ -1,0 +1,129 @@
+﻿using Unity.Cinemachine;
+using UnityEngine;
+
+public class ClawController : MonoBehaviour
+{
+    [SerializeField]
+    CinemachineCamera _clawCamera;
+    [SerializeField]
+    Vector2 _upperCorner;
+    [SerializeField]
+    Vector2 _lowerCorner;
+    [SerializeField]
+    Transform _holdPoint;
+
+    ClawInput _input;
+
+    readonly float _grabDistance = 8f;
+    readonly float _placeY = 10f;
+    readonly float _moveSpeed = 5f;
+    readonly float _grabSpeed = 5f;
+
+    bool _goingDown;
+    bool _grabbing;
+    bool _isHolding;
+    float _newY;
+
+    PipeDetail _chosenPipe;
+    PipeDetail _grabedPipe;
+
+    void Start()
+    {
+        _input = GetComponent<ClawInput>();
+        _newY = transform.position.y - _grabDistance;
+    }
+
+    void Update()
+    {
+        Move();
+        HighlightPipe();
+
+        if (_input.Grab && (!_isHolding && _chosenPipe != null || _isHolding && _chosenPipe == null))
+        {
+            _goingDown = true;
+            _grabbing = true;
+            _newY = transform.position.y + _grabDistance;
+        }
+
+        if (!_grabbing && !_isHolding && _chosenPipe.CanMove() && _input.RotateClockwise)
+        {
+            _chosenPipe.Rotate(1);
+        }
+
+        if (!_grabbing && !_isHolding && _chosenPipe.CanMove() && _input.RotateCounterclockwise)
+        {
+            _chosenPipe.Rotate(-1);
+        }
+
+        if (_grabbing)
+        {
+            Vector3 pos = transform.position;
+            pos.y = Mathf.MoveTowards(pos.y, _newY, Time.deltaTime * _grabSpeed);
+            transform.position = pos;
+            if (Mathf.Approximately(pos.y, _newY))
+            {
+                if (_goingDown)
+                {
+                    //play claw animation
+
+                }
+                else
+                {
+                    _grabbing = false;
+                    _newY = transform.position.y - _grabDistance;
+                }
+            }
+        }
+    }
+    /// <summary>
+    /// Moves the claw
+    /// </summary>
+    void Move()
+    {
+        float moveToX = Mathf.Clamp(transform.position.x + _input.Move.x, _lowerCorner.x, _upperCorner.x);
+        float moveToZ = Mathf.Clamp(transform.position.y + _input.Move.y, _lowerCorner.y, _upperCorner.y);
+        transform.position += new Vector3(moveToX, transform.position.y, moveToZ) * Time.deltaTime;
+    }
+    /// <summary>
+    /// Highlights a pipe under the claw
+    /// </summary>
+    void HighlightPipe()
+    {
+        if (Physics.Raycast(transform.position - transform.up * 2f, -transform.up, out RaycastHit hit, 100f, LayerMask.GetMask("InteractiveObject")))
+        {
+            PipeDetail newPipe = hit.collider.gameObject.GetComponent<PipeDetail>();
+            if (_chosenPipe != newPipe)
+            {
+                _chosenPipe.GetComponent<Outline>().enabled = false;
+                _chosenPipe = newPipe;
+                _chosenPipe.GetComponent<Outline>().enabled = true;
+            }
+        }
+    }
+
+    public void StartClawGame()
+    {
+        _input.LockInput(false);
+        _clawCamera.Priority = 10;
+    }
+
+    public void GrabPipe()
+    {
+        _grabedPipe = _chosenPipe;
+        _isHolding = true;
+        _grabedPipe.transform.SetParent(_holdPoint);
+        transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+        _newY = transform.position.y + _grabDistance;
+    }
+
+    public void ReleasePipe()
+    {
+        _isHolding = true;
+        _grabedPipe.transform.SetParent(null);
+        Vector3 pos = transform.position;
+        pos.y = _placeY;
+        _grabedPipe.TryConnectPipe();
+        _grabedPipe.transform.position = pos;
+        _newY = transform.position.y + _grabDistance;
+    }
+}

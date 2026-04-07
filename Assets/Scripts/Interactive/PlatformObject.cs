@@ -24,11 +24,9 @@ public class PlatformObject : InteractionObject
     [Inject]
     InteractionUIManager _interactionUI;
 
-    protected override void Start()
+    void Start()
     {
-        base.Start();
-        _interactionUI = GameObject.Find("IneractionCanvas").GetComponent<InteractionUIManager>();
-        _interaction = Place;
+        _interaction.AddListener(Place);
     }
 
     public override bool CanInteract()
@@ -48,7 +46,13 @@ public class PlatformObject : InteractionObject
         _interactionUI.Show(transform, _interactionText,_pickupOffset);
         _placed = true;
         _placedObject = _player.PickedUpObject;
-        _interaction = PickUp;
+        Debug.Log($"Place called. Listeners before: {_interaction?.GetPersistentEventCount()}");
+
+        _interaction.RemoveListener(Place);
+        Debug.Log($"After RemoveListener(Place): {_interaction?.GetPersistentEventCount()}");
+
+        _interaction.AddListener(PickUp);
+        Debug.Log($"After AddListener(PickUp): {_interaction?.GetPersistentEventCount()}");
     }
 
     public void PickUp()
@@ -59,7 +63,8 @@ public class PlatformObject : InteractionObject
         _interactionUI.Show(transform, _interactionText,_placeOffset);
         _placed = false;
         _player.PickedUpObject = _placedObject;
-        _interaction = Place;
+        _interaction.RemoveListener(PickUp);
+        _interaction.AddListener(Place);
     }
 
     public void LowerPlatform()

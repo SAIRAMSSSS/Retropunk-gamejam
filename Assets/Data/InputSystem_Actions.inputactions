@@ -605,6 +605,138 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "ClawGame",
+            "id": "612c09a2-a996-4dd7-ac0b-ae8cbbe2d994",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "984c80c8-3e72-4cf0-b338-9b9daa0d80fc",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "RotateClockwise",
+                    "type": "Button",
+                    "id": "c0abe144-0057-434c-b0a2-9981043d418b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RotateCounterclockwise",
+                    "type": "Button",
+                    "id": "e8a7c3d3-64c9-417f-ad5d-c4db10f9be5f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Grab",
+                    "type": "Button",
+                    "id": "f2838284-de67-46a3-8c66-cc97ecaf9958",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "WASD",
+                    "id": "1ef5c6bb-19e5-4c10-a712-90b2e3fe214f",
+                    "path": "2DVector",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "f80bf4dc-6850-495a-abfe-a759a6611faf",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "4d71ab0b-6a9b-4d66-9162-5f2a7b77744a",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "2d14e88b-3393-4ea1-8ca3-58d56ae2df13",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "ac67eee5-aaea-4e79-bcf7-9e7ec2b0ad44",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "9035fc99-9a3a-45e7-a73b-e4ef0f285687",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "RotateClockwise",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6ad869a2-34d5-41fe-88c4-b92cb44ef88f",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "RotateCounterclockwise",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "205f5fbd-e448-4841-a522-4d2431d769fe",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
@@ -652,17 +784,6 @@
             "devices": [
                 {
                     "devicePath": "<Joystick>",
-                    "isOptional": false,
-                    "isOR": false
-                }
-            ]
-        },
-        {
-            "name": "XR",
-            "bindingGroup": "XR",
-            "devices": [
-                {
-                    "devicePath": "<XRController>",
                     "isOptional": false,
                     "isOR": false
                 }

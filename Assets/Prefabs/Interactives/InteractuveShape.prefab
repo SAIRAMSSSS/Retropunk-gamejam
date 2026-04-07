@@ -177,6 +177,9 @@ MonoBehaviour:
   _interactionText: Press E to lift an object
   _interactionName: Lift
   _interactonTextOffset: 1.2
+  _interaction:
+    m_PersistentCalls:
+      m_Calls: []
   _objectNum: 0
 --- !u!208 &658705165155469816
 NavMeshObstacle:

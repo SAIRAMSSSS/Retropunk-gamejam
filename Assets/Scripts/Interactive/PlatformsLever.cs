@@ -6,12 +6,6 @@ public class PlatformsLever : InteractionObject
     [SerializeField]
     PlatformObject[] _platforms;
 
-    protected override void Start()
-    {
-        base.Start();
-        _interaction = Interact;
-    }
-
     public override bool CanInteract()
     {
         return _canInteract && (_platforms.All(p => p.Placed) && !_player.HasPickUp);

@@ -70,4 +70,19 @@ MonoBehaviour:
   _interactionText: Press E to exit a room
   _interactionName: Trabsition
   _interactonTextOffset: 1
-  _sceneName: 
+  _interaction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4504021340804430555}
+        m_TargetAssemblyTypeName: TeleportToLevel, Assembly-CSharp
+        m_MethodName: GoToLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _levelNumber: 0

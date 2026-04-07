@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 using Zenject;
 
 public abstract class InteractionObject : MonoBehaviour
@@ -12,22 +13,18 @@ public abstract class InteractionObject : MonoBehaviour
     protected string _interactionName;
     [SerializeField]
     protected float _interactonTextOffset;
+    [SerializeField]
+    protected UnityEvent _interaction;
 
     public int Prioroty => _priority;
     public string InteractionText => _interactionText;
     public string InteractionName => _interactionName;
     public float InteractionOffset => _interactonTextOffset;
 
-    protected Action _interaction;
     protected bool _canInteract = true;
 
     [Inject]
     protected PlayerController _player;
-
-    protected virtual void Start()
-    {
-        _player = GameObject.Find("Player").GetComponent<PlayerController>();
-    }
 
     public abstract bool CanInteract();
 

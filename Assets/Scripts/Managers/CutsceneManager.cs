@@ -17,7 +17,7 @@ public class CutsceneManager : MonoBehaviour
     [Inject]
     DialogueManager _dialogueManager;
     [Inject]
-    SceneTransitionManager _transitionManager;
+    LevelManager _levelManager;
 
     private void Start()
     {
@@ -35,8 +35,6 @@ public class CutsceneManager : MonoBehaviour
     public void StartCutscene()
     {
         _player.enabled = false;
-        BindTrack("DialogueTrack", _dialogueManager.gameObject);
-        BindTrack("ScreenTrack", _dialogueManager.transform.GetChild(0).gameObject);
         _timeline.Play();
     }
     /// <summary>
@@ -59,11 +57,13 @@ public class CutsceneManager : MonoBehaviour
     {
         _player.enabled = false;
         BindTrack("DialogueTrack", _dialogueManager.gameObject);
-        BindTrack("ScreenTrack", _dialogueManager.transform.GetChild(0).gameObject);
+        BindTrack("ScreenTrack",_dialogueManager.transform.GetChild(0).gameObject);
     }
 
     public void EndPrologueCutscene()
     {
+        _player.enabled = true;
+        _animator.SetLayerWeight(2, 0);
         _animator.SetBool("Sit", false);
     }
     /// <summary>
@@ -71,9 +71,9 @@ public class CutsceneManager : MonoBehaviour
     /// </summary>
     /// <param name="sceneName"></param>
     /// <param name="cutsceneName"></param>
-    public void ContinueInNextScene(string sceneName, string cutsceneName)
+    public void ContinueInNextLevel(int levelIndex, string cutsceneName)
     {
-        _transitionManager.LoadSceneWithCutscene(sceneName, cutsceneName);
+        _levelManager.LoadLevelWithCutscene(levelIndex, cutsceneName);
     }
     /// <summary>
     /// Binds an object to a timeline track

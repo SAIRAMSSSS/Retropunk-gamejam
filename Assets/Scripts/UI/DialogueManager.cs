@@ -37,7 +37,6 @@ public class DialogueManager : MonoBehaviour
     {
         _parser = new DialogueParser();
         _animator = _player.GetComponent<Animator>();
-        _timeline = GameObject.Find("Cutscene").GetComponent<PlayableDirector>();
     }
 
     private void Update()

@@ -8,7 +8,7 @@ public class RadioactivePanel : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //teleports the player to the start point when he steps on the panel
+        //teleports the player to the start point when they step on the panel
         if (other.CompareTag("Player"))
         {
             other.transform.rotation = _startPoint.rotation;

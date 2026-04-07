@@ -23,13 +23,12 @@ public class LiftObject : InteractionObject
 
     Vector3 _scale;
 
-    protected override void Start()
+    void Start()
     {
-        base.Start();
         _obstacle = GetComponent<NavMeshObstacle>();
         _rb = GetComponent<Rigidbody>();
-        _interaction = Lift;
         _scale = transform.lossyScale;
+        _interaction.AddListener(Lift);
     }
 
     public override bool CanInteract()
@@ -43,12 +42,13 @@ public class LiftObject : InteractionObject
         _interactionText = _dropText;
         _interactonTextOffset = _dropOffset;
         _picked = true;
-        _interaction = Drop;
         _rb.isKinematic = true;
         _rb.useGravity = false;
         _obstacle.enabled = false;
         transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
         transform.localScale = _scale;
+        _interaction.RemoveListener(Lift);
+        _interaction.AddListener(Drop);
     }
 
     public void Place()
@@ -61,7 +61,8 @@ public class LiftObject : InteractionObject
         _interactionText = _liftText;
         _interactonTextOffset = _liftOffset;
         transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-        _interaction = Lift;
+        _interaction.RemoveListener(Place);
+        _interaction.AddListener(Lift);
     }
 
     public void SetScale(Vector3 parentScale)
@@ -82,8 +83,9 @@ public class LiftObject : InteractionObject
         _interactionName = _liftName;
         _interactionText = _liftText;
         _interactonTextOffset = _liftOffset;
-        _interaction = Lift;
         transform.SetParent(null);
         transform.position = _player.transform.position + _player.transform.forward * 0.65f + Vector3.up * 0.06f;
+        _interaction.RemoveListener(Drop);
+        _interaction.AddListener(Lift);
     }
 }
