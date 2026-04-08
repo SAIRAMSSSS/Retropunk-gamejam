@@ -15,6 +15,7 @@ public class InteractionZone : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         InteractionObject newObj = other.gameObject.GetComponent<InteractionObject>();
+        //if there is no object in the zone or the priority of the new object is higher than the old one
         if (newObj.CanInteract() && (CurrentObject == null || CurrentObject != null && newObj.Prioroty > CurrentObject.Prioroty))
         {
             CurrentObject = newObj;
@@ -27,6 +28,7 @@ public class InteractionZone : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         InteractionObject newObj = other.gameObject.GetComponent<InteractionObject>();
+        //if an object with a higher priority is not interactive
         if (newObj.CanInteract() && CurrentObject == null)
         {
             CurrentObject = newObj;

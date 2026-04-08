@@ -66,13 +66,15 @@ public class PlatformObject : InteractionObject
         _interaction.RemoveListener(PickUp);
         _interaction.AddListener(Place);
     }
-
+    /// <summary>
+    /// Lowers the platform after the puzzle is completed
+    /// </summary>
     public void LowerPlatform()
     {
         transform.position = new Vector3(transform.position.x, 0.2f, transform.position.z);
         _canInteract = false;
         _placedObject.DisableInteraction();
     }
-
+    //if the object on the platform is correct
     public bool PlatformObjectMatch() => _platformNum == (_placedObject as LiftObject).ObjectNum;
 }

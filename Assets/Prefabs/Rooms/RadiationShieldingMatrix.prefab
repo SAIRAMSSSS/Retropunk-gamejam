@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 1711538057367800583}
   - component: {fileID: 3175978684560916780}
   - component: {fileID: 5256437762237158433}
+  - component: {fileID: 8631352645763085397}
   m_Layer: 0
   m_Name: Cutscene
   m_TagString: Untagged
@@ -101,6 +102,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 7837676851862971122, guid: b7b072d4c7ccdd74fb47ede77e061fc7, type: 2}
     value: {fileID: 5256437762237158433}
+  - key: {fileID: 1400404998806971334, guid: 1e37e5ae95d1d364cad87c9586c6ae86, type: 2}
+    value: {fileID: 5256437762237158433}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &3175978684560916780
@@ -115,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628b4e8de076b5c409e9843ccf30078f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneManager
+  _cutsceneCamera: {fileID: 9123023454825858608}
   _timelines: []
 --- !u!114 &5256437762237158433
 MonoBehaviour:
@@ -146,6 +150,102 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!65 &8631352645763085397
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610578095937774800}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &4733657994158255280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3683028297962737830}
+  - component: {fileID: 9123023454825858608}
+  m_Layer: 0
+  m_Name: CutsceneCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3683028297962737830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4733657994158255280}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.39791793, y: 0.03136193, z: -0.013611569, w: -0.9167838}
+  m_LocalPosition: {x: 6.306302, y: 14.399561, z: -6.068553}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5139082898599789069}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9123023454825858608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4733657994158255280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
+  Priority:
+    Enabled: 1
+    m_Value: 0
+  OutputChannel: 1
+  StandbyUpdate: 2
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
+  Target:
+    TrackingTarget: {fileID: 0}
+    LookAtTarget: {fileID: 0}
+    CustomLookAtTarget: 0
+  Lens:
+    FieldOfView: 62.02449
+    OrthographicSize: 5
+    NearClipPlane: 0.03
+    FarClipPlane: 1000
+    Dutch: 0
+    ModeOverride: 0
+    PhysicalProperties:
+      GateFit: 2
+      SensorSize: {x: 21.946, y: 16.002}
+      LensShift: {x: 0, y: 0}
+      FocusDistance: 10
+      Iso: 200
+      ShutterSpeed: 0.005
+      Aperture: 16
+      BladeCount: 5
+      Curvature: {x: 2, y: 11}
+      BarrelClipping: 0.25
+      Anamorphism: 0
+  BlendHint: 0
 --- !u!1 &8816937053180081248
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,5 +277,6 @@ Transform:
   m_Children:
   - {fileID: 6782238602950879479}
   - {fileID: 3460642295887558682}
+  - {fileID: 3683028297962737830}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

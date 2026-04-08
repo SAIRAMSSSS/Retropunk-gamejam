@@ -35,8 +35,8 @@
     {
       "speaker": "Macklin",
       "text": "Are you serious? What on Earth happened?",
-      "animation": "",
-      "animationLayer": 0
+      "animation": "HeadShake",
+      "animationLayer": 3
     },
     {
       "speaker": "AI",
@@ -71,8 +71,8 @@
     {
       "speaker": "Macklin",
       "text": "I get it, I get it, you don’t need to repeat yourself.",
-      "animation": "",
-      "animationLayer": 0
+      "animation": "HeadShake",
+      "animationLayer": 3
     },
     {
       "speaker": "AI",
@@ -83,8 +83,8 @@
     {
       "speaker": "Macklin",
       "text": "Ugh, I hate machines...",
-      "animation": "",
-      "animationLayer": 0
+      "animation": "HeadShake",
+      "animationLayer": 3
     }
   ]
 }

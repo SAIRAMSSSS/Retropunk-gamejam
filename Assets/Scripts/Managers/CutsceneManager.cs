@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
@@ -6,6 +7,8 @@ using Zenject;
 
 public class CutsceneManager : MonoBehaviour
 {
+    [SerializeField]
+    CinemachineCamera _cutsceneCamera;
     [SerializeField]
     TimelineAsset[] _timelines;
 
@@ -19,12 +22,17 @@ public class CutsceneManager : MonoBehaviour
     [Inject]
     LevelManager _levelManager;
 
+    string _nextCutsceneName;
+
     private void Start()
     {
         _timeline = GetComponent<PlayableDirector>();
         _animator = _player.GetComponent<Animator>();
     }
-
+    /// <summary>
+    /// Sets a timeline by name
+    /// </summary>
+    /// <param name="timeline"></param>
     public void SetTimeline(string timeline)
     {
         _timeline.playableAsset = _timelines.First(t => t.name == timeline);
@@ -34,7 +42,12 @@ public class CutsceneManager : MonoBehaviour
     /// </summary>
     public void StartCutscene()
     {
+        _cutsceneCamera.Priority = 10;
         _player.enabled = false;
+        BindTrack("DialogueTrack", _dialogueManager.gameObject);
+        BindTrack("ScreenTrack", _dialogueManager.transform.GetChild(0).gameObject);
+        BindTrack("CameraTrack", Camera.main.gameObject);
+        BindTrack("PlayerTrack", _player.gameObject);
         _timeline.Play();
     }
     /// <summary>
@@ -42,6 +55,8 @@ public class CutsceneManager : MonoBehaviour
     /// </summary>
     public void EndCutscene()
     {
+        _cutsceneCamera.Priority = 0;
+        _cutsceneCamera.Follow = _player.transform;
         _player.enabled = true;
     }
     /// <summary>
@@ -53,17 +68,8 @@ public class CutsceneManager : MonoBehaviour
         _animator.SetTrigger("PhoneCall");
     }
 
-    public void StartPrologueCutscene()
-    {
-        _player.enabled = false;
-        BindTrack("DialogueTrack", _dialogueManager.gameObject);
-        BindTrack("ScreenTrack",_dialogueManager.transform.GetChild(0).gameObject);
-    }
-
     public void EndPrologueCutscene()
     {
-        _player.enabled = true;
-        _animator.SetLayerWeight(2, 0);
         _animator.SetBool("Sit", false);
     }
     /// <summary>
@@ -71,9 +77,17 @@ public class CutsceneManager : MonoBehaviour
     /// </summary>
     /// <param name="sceneName"></param>
     /// <param name="cutsceneName"></param>
-    public void ContinueInNextLevel(int levelIndex, string cutsceneName)
+    public void ContinueInNextLevel(int levelIndex)
     {
-        _levelManager.LoadLevelWithCutscene(levelIndex, cutsceneName);
+        _levelManager.LoadLevelWithCutscene(levelIndex, _nextCutsceneName);
+    }
+    /// <summary>
+    /// Sets the name for the next cutscene in a row
+    /// </summary>
+    /// <param name="cutsceneName"></param>
+    public void SetNextCutscene(string cutsceneName)
+    {
+       _nextCutsceneName = cutsceneName;
     }
     /// <summary>
     /// Binds an object to a timeline track
@@ -87,7 +101,15 @@ public class CutsceneManager : MonoBehaviour
         if (timeline != null)
         {
             TrackAsset track = timeline.GetOutputTracks().First(t => t.name == trackName);
-            _timeline.SetGenericBinding(track, trckObj);
+            if (track != null)
+            {
+                _timeline.SetGenericBinding(track, trckObj);
+            }
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        StartCutscene();
     }
 }

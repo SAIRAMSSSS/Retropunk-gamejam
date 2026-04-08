@@ -16,9 +16,4 @@ public class TeleportToLevel : InteractionObject
     {
         _levelManager.LoadLevel(_levelNumber);
     }
-
-    public override bool CanInteract()
-    {
-        return true;
-    }
 }

@@ -3,18 +3,14 @@
 public class GameManager : MonoBehaviour
 {
     bool[] _completedRooms = new bool[4];
-
-    void Start()
-    {
-    }
-
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// A puzzle in a room is completed
+    /// </summary>
+    /// <param name="rooomIndex"></param>
     public void CompleteRoom(int rooomIndex)
     {
         _completedRooms[rooomIndex] = true;
     }
+
+
 }

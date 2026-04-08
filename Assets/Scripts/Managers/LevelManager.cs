@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 public class LevelManager : MonoBehaviour
@@ -11,11 +10,12 @@ public class LevelManager : MonoBehaviour
     [Inject]
     UIManager _UI;
     [Inject]
+    PlayerInput _player;
+    [Inject]
     DiContainer _container;
 
-    readonly float _darkenDuration = 0.8f;
-
     GameObject _currentLevel;
+    public int CurrentLevelIndex { get; private set; }
 
     private void Start()
     {
@@ -29,6 +29,10 @@ public class LevelManager : MonoBehaviour
             Destroy(_currentLevel);
         }
         _currentLevel = _container.InstantiatePrefab(_levels[levelIndex]);
+        if(CurrentLevelIndex == 6)
+        {
+            _currentLevel.GetComponentInChildren<PlayerSpawner>().SetPlayerSpawnPosition(CurrentLevelIndex);
+        }
     }
     /// <summary>
     /// Darkens the screen, loads a new scene, and removes the blackout
@@ -37,27 +41,11 @@ public class LevelManager : MonoBehaviour
     /// <returns></returns>
     public IEnumerator LoadLevel(int levelIndex)
     {
-        yield return StartCoroutine(DarkenScreen(0, 1));
+        _player.LockInput(true);
+        yield return StartCoroutine(_UI.DarkenScreen(0, 1));
         SetNewLevel(levelIndex);
-        yield return null;
-        yield return StartCoroutine(DarkenScreen(1, 0));
-    }
-    /// <summary>
-    /// Darkens the screen before loading the new scene
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator DarkenScreen(float startAlpha, float endAlpha)
-    {
-        float timer = 0;
-        while (timer < _darkenDuration)
-        {
-            timer += Time.deltaTime;
-            float alpha = Mathf.Lerp(startAlpha, endAlpha, timer / _darkenDuration);
-            _UI.SetDarkenScreen(alpha);
-            yield return null;
-        }
-
-        _UI.SetDarkenScreen(endAlpha);
+        yield return StartCoroutine(_UI.DarkenScreen(1, 0));
+        _player.LockInput(false);
     }
     /// <summary>
     /// Loads new scene and plays the cutscene

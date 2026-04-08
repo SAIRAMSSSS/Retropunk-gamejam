@@ -6,6 +6,7 @@ public class ClawInput : MonoBehaviour
     bool _grab;
     bool _rotateClockwise;
     bool _rotateConuterclockwise;
+    bool _exitGame;
     Vector2 _move;
 
     public bool Grab
@@ -46,6 +47,20 @@ public class ClawInput : MonoBehaviour
             return false;
         }
     }
+
+    public bool ExitGame
+    {
+        get
+        {
+            if (_exitGame)
+            {
+                _exitGame = false;
+                return !_inputLocked;
+            }
+            return false;
+        }
+    }
+
     public Vector2 Move => _inputLocked ? Vector2.zero : _move;
 
     bool _inputLocked = true;
@@ -70,8 +85,13 @@ public class ClawInput : MonoBehaviour
         _rotateConuterclockwise = inputValue.isPressed;
     }
 
-    public void On(InputValue inputValue)
+    public void OnMove(InputValue inputValue)
     {
         _move = inputValue.Get<Vector2>();
+    }
+
+    public void OnExitGame(InputValue inputValue)
+    {
+        _exitGame = inputValue.isPressed;
     }
 }

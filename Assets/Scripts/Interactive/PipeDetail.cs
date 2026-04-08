@@ -1,49 +1,62 @@
 ﻿using UnityEngine;
 
+public enum PipeType
+{
+    End,
+    Movable, 
+    Fixed
+}
+
 public class PipeDetail : MonoBehaviour
 {
     [SerializeField]
-    bool _canMove;
+    PipeType _pipeType;
 
     readonly float _rotationAngle = 90f;
     readonly float _pipeRadius = 10f;
 
-    bool _connected;
-
     public bool CanMove()
     {
-        return _canMove;
+        return _pipeType == PipeType.Movable;
     }
 
     public void Rotate(int direction)
     {
         transform.Rotate(0, direction * _rotationAngle, 0, Space.Self);
-        TryConnectPipe();
+        TryConnectAllPipes();
     }
 
-    public void TryConnectPipe()
+    public bool TryConnectAllPipes(PipeDetail previousPipe = null)
     {
-        if (!_connected)
+        if(_pipeType == PipeType.End)
         {
-            for (int i = 0; i < transform.childCount; i++)
+            return true;
+        }
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Transform corner = transform.GetChild(i);
+            Collider[] hits = Physics.OverlapSphere(corner.position, _pipeRadius, LayerMask.GetMask("PipeDetail"));
+            bool cornerConnected = false;
+            foreach (var hit in hits)
             {
-                Transform corner = transform.GetChild(i);
-                Collider[] hits = Physics.OverlapSphere(corner.position, _pipeRadius, LayerMask.GetMask("InteractiveObject"));
-                bool cornerConnected = false;
-                foreach (var hit in hits)
+                if (hit.TryGetComponent(out PipeDetail pipe))
                 {
-                    if (hit.TryGetComponent(out PipeDetail pipe))
+                    if (pipe!=previousPipe&&!pipe.TryConnectAllPipes(this))
                     {
-                        pipe.TryConnectPipe();
+                        return false;
+                    }
+                    else
+                    {
                         cornerConnected = true;
-                        break;
                     }
                 }
-
-                if (!cornerConnected)
-                    return;
             }
-            _connected = true;
+
+            if (!cornerConnected)
+                return false;
         }
+
+        return true;
     }
 }

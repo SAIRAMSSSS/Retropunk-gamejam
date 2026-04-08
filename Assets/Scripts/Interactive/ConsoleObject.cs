@@ -1,9 +1,16 @@
-﻿using UnityEngine;
+﻿using Zenject;
 
 public class ConsoleObject : InteractionObject
 {
-    public override bool CanInteract()
+    [Inject]
+    GameManager _gameManager;
+    /// <summary>
+    /// Closes the interaction with the puzzle and signals that it's been completed
+    /// </summary>
+    /// <param name="roomNum"></param>
+    public void CompletePuzzle(int roomNum)
     {
-        return true;
+        _canInteract = false;
+        _gameManager.CompleteRoom(roomNum);
     }
 }

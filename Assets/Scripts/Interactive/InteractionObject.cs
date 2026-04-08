@@ -26,7 +26,10 @@ public abstract class InteractionObject : MonoBehaviour
     [Inject]
     protected PlayerController _player;
 
-    public abstract bool CanInteract();
+    public virtual bool CanInteract()
+    {
+        return _canInteract;
+    }
 
     public void PerformActions()
     {

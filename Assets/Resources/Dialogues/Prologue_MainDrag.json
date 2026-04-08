@@ -5,8 +5,8 @@
     {
       "speaker": "Macklin",
       "text": "Jesus, what on earth even happened here?",
-      "animation": "",
-      "animationLayer": 0
+      "animation": "HeadShake",
+      "animationLayer": 3
     }
   ]
 }

@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     readonly int _hashCanMove = Animator.StringToHash("CanMove");
     readonly int _hashPickup = Animator.StringToHash("Pickup");
     readonly int _hashLever = Animator.StringToHash("Lever");
+    readonly int _hashConsole = Animator.StringToHash("Console");
 
     PlayerInput _input;
     NavMeshAgent _navAgent;
@@ -120,6 +121,13 @@ public class PlayerController : MonoBehaviour
                         _upperBodyLayerWeight = 0f;
                     }));
                     break;
+                case "Console":
+                    StartCoroutine(RotateTowardsInteractiveObject(() =>
+                    {
+                        _animator.SetTrigger(_hashConsole);
+                        _interactionZone.CurrentObject.PerformActions();
+                    }));
+                    break;
                 default:
                     _interactionZone.CurrentObject.PerformActions();
                     break;
@@ -197,7 +205,6 @@ public class PlayerController : MonoBehaviour
         HasPickUp = true;
         PickedUpObject.transform.SetParent(_pickupPoint);
         PickedUpObject.PerformActions();
-        // _animator.SetLayerWeight(1, 1);
     }
 
     public void TurnOnUpperLayer()
@@ -217,5 +224,10 @@ public class PlayerController : MonoBehaviour
         PickedUpObject.PerformActions();
         PickedUpObject = null;
         _upperBodyLayerWeight = 0f;
+    }
+
+    public void Interact()
+    {
+        _interactionZone.CurrentObject?.PerformActions();
     }
 }

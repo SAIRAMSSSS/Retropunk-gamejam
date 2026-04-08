@@ -146,7 +146,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(dialogue.animation))
         {
-            if (!_phoneCall)
+            if (!_phoneCall || dialogue.animationLayer != 2)
             {
                 _layerValue = 1;
                 _layerIndex = dialogue.animationLayer;

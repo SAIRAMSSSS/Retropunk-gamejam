@@ -5,7 +5,7 @@ using Zenject;
 public class PlayerSpawner : MonoBehaviour
 {
     [Inject]
-    PlayerInput _player;
+    PlayerController _player;
 
     void Start()
     {
