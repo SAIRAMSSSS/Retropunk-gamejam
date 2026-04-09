@@ -1,13 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
+    GameObject _gameOverLayout;
+
     Image _darkenScreen;
 
     readonly float _darkenDuration = 0.8f;
+
+    private void Start()
+    {
+        _darkenScreen = transform.GetChild(0).GetComponent<Image>();
+    }
 
     /// <summary>
     /// Darkens the screen 
@@ -35,5 +44,15 @@ public class UIManager : MonoBehaviour
         Color newColor = _darkenScreen.color;
         newColor .a = alpha;    
         _darkenScreen.color = newColor;
+    }
+
+    public void SetGameOver()
+    {
+        _gameOverLayout.SetActive(true);
+    }
+
+    public void ReloadGame()
+    {
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 }

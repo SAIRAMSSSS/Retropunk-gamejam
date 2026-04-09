@@ -8,26 +8,31 @@ using Zenject;
 public class CutsceneManager : MonoBehaviour
 {
     [SerializeField]
+    bool _startOnTrigger;
+    [SerializeField]
     CinemachineCamera _cutsceneCamera;
     [SerializeField]
     TimelineAsset[] _timelines;
 
     Animator _animator;
     PlayableDirector _timeline;
+    CinemachineImpulseSource _impulseSource;
 
     [Inject]
     PlayerController _player;
     [Inject]
-    DialogueManager _dialogueManager;
+    UIManager _UI;
     [Inject]
     LevelManager _levelManager;
-
+    [Inject]
+    GameManager _gameManager;
     string _nextCutsceneName;
 
     private void Start()
     {
         _timeline = GetComponent<PlayableDirector>();
         _animator = _player.GetComponent<Animator>();
+        _impulseSource = GetComponent<CinemachineImpulseSource>();
     }
     /// <summary>
     /// Sets a timeline by name
@@ -44,8 +49,8 @@ public class CutsceneManager : MonoBehaviour
     {
         _cutsceneCamera.Priority = 10;
         _player.enabled = false;
-        BindTrack("DialogueTrack", _dialogueManager.gameObject);
-        BindTrack("ScreenTrack", _dialogueManager.transform.GetChild(0).gameObject);
+        BindTrack("DialogueTrack", _UI.transform.GetChild(2).gameObject);
+        BindTrack("ScreenTrack", _UI.gameObject);
         BindTrack("CameraTrack", Camera.main.gameObject);
         BindTrack("PlayerTrack", _player.gameObject);
         _timeline.Play();
@@ -100,7 +105,7 @@ public class CutsceneManager : MonoBehaviour
 
         if (timeline != null)
         {
-            TrackAsset track = timeline.GetOutputTracks().First(t => t.name == trackName);
+            TrackAsset track = timeline.GetOutputTracks().FirstOrDefault(t => t.name == trackName);
             if (track != null)
             {
                 _timeline.SetGenericBinding(track, trckObj);
@@ -108,8 +113,36 @@ public class CutsceneManager : MonoBehaviour
         }
     }
 
+    public void StartGameOver()
+    {
+        _player.enabled = false;
+        BindTrack("ScreenTrack", _UI.gameObject);
+        BindTrack("CutsceneTrack", gameObject);
+        _impulseSource.GenerateImpulse();
+        _timeline.Play();
+    }
+
+    public void GameOver()
+    {
+        _UI.SetGameOver();
+    }
+
+    public void StartGameplay()
+    {
+        _gameManager.StartTimer();
+    }
+
+    public void EndGame()
+    {
+        _UI.ReloadGame();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        StartCutscene();
+        if (_startOnTrigger)
+        {
+            StartCutscene();
+            _startOnTrigger = false;
+        }
     }
 }
