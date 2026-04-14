@@ -1,4 +1,4 @@
-#if !NOT_UNITY3D
+﻿#if !NOT_UNITY3D
 
 using System;
 using System.Collections.Generic;
@@ -101,7 +101,7 @@ namespace Zenject
             ProfileBlock.UnityMainThread = Thread.CurrentThread;
 #endif
 
-            Assert.That(FindObjectsOfType<ProjectContext>().IsEmpty(),
+            Assert.That(FindObjectsByType<ProjectContext>().IsEmpty(),
                 "Tried to create multiple instances of ProjectContext!");
 
             var prefab = TryGetPrefab();

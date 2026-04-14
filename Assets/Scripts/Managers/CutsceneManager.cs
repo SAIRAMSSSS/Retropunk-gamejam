@@ -49,9 +49,10 @@ public class CutsceneManager : MonoBehaviour
     {
         _cutsceneCamera.Priority = 10;
         _player.enabled = false;
-        BindTrack("DialogueTrack", _UI.transform.GetChild(2).gameObject);
+        BindTrack("DialogueTrack", _UI.gameObject);
         BindTrack("ScreenTrack", _UI.gameObject);
         BindTrack("CameraTrack", Camera.main.gameObject);
+        BindTrack("AudioTrack", gameObject);
         BindTrack("PlayerTrack", _player.gameObject);
         _timeline.Play();
     }

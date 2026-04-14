@@ -8,9 +8,9 @@ public class LevelManager : MonoBehaviour
     GameObject[] _levels;
 
     [Inject]
-    GameManager _gameManager;
-    [Inject]
     UIManager _UI;
+    [Inject]
+    AudioManager _audioManager;
     [Inject]
     PlayerInput _player;
     [Inject]
@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
     GameObject _currentLevel;
     int _currentLevelIndex;
 
-    readonly string _endCutsceneName = "Ending_MainDrag";
+    //readonly string _endCutsceneName = "Ending_MainDrag";
     readonly int _mainDragIndex = 6;
 
     private void Start()
@@ -50,12 +50,13 @@ public class LevelManager : MonoBehaviour
         _player.LockInput(true);
         yield return StartCoroutine(_UI.DarkenScreen(0, 1));
         SetNewLevel(levelIndex);
+        StartCoroutine(_audioManager.StartNewLevelMusic(levelIndex));
         yield return StartCoroutine(_UI.DarkenScreen(1, 0));
         _player.LockInput(false);
-        if(levelIndex == _mainDragIndex && _gameManager.AllPuzzlesCompleted)
-        {
-            PlayCutscene(_endCutsceneName);
-        }
+        //if(levelIndex == _mainDragIndex && _gameManager.AllPuzzlesCompleted)
+        //{
+        //    PlayCutscene(_endCutsceneName);
+        //}
     }
     /// <summary>
     /// Loads new scene and plays the cutscene
@@ -70,7 +71,7 @@ public class LevelManager : MonoBehaviour
 
     public CutsceneManager GetCurrentCutscene()=> _currentLevel.GetComponentInChildren<CutsceneManager>();
 
-    void PlayCutscene(string cutsceneName)
+    public void PlayCutscene(string cutsceneName)
     {
         var cutscene = GetCurrentCutscene();
         cutscene.SetTimeline(cutsceneName);

@@ -4,8 +4,6 @@ using UnityEngine;
 public class SoundLightSignalPanel : MonoBehaviour
 {
     [SerializeField]
-    AudioClip[] _tones;
-    [SerializeField]
     Material[] _lightColors;
     [SerializeField]
     Material _defaultLight;
@@ -47,25 +45,25 @@ public class SoundLightSignalPanel : MonoBehaviour
     public void CanPlaySequence(bool interact)
     {
         _playSequenceRecoverTimer = _playSequenceRecoverTime / 2f;
+        if (!interact)
+        {
+            _audioPlayer.Stop();
+        }
         _canPlay = interact;
     }
     
     IEnumerator PlayToneSequence()
     {
         _playing = true;
-        for (int i = 0; i < _tones.Length; i++)
+        _audioPlayer.Play();
+        for (int i = 0; i < _lights.Length; i++)
         {
             _lights[i].material = _lightColors[i];
-            if (_tones[i] != null)
-            {
-                _audioPlayer.PlayOneShot(_tones[i]);
-            }
 
             yield return new WaitForSeconds(0.5f);
 
             _lights[i].material = _defaultLight;
         }
-
         _playing = false;
     }
 }

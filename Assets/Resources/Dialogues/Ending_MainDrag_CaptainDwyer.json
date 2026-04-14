@@ -4,31 +4,19 @@
   "lines": [
     {
       "speaker": "Captain Dwyer",
-      "text": "Macklin! Did you figure out what was going on? We don’t have much time!",
+      "text": "Macklin! Status Report!",
       "animation": "PhoneListen",
       "animationLayer": 2
     },
     {
       "speaker": "Macklin",
-      "text": "Yeah, I got it all fixed Cap, but it still seems like we’re all doomed...",
+      "text": "I’ve got everything fixed, but systems are still going haywire. What did I miss?",
       "animation": "PhoneSpeak",
       "animationLayer": 2
     },
     {
       "speaker": "Captain Dwyer",
-      "text": "Get back to the Main Control Center! You probably need to reboot the entire system!",
-      "animation": "PhoneListen",
-      "animationLayer": 2
-    },
-    {
-      "speaker": "Macklin",
-      "text": "Seriously? There’s another thing I have to do?",
-      "animation": "PhoneSpeak",
-      "animationLayer": 2
-    },
-    {
-      "speaker": "Captain Dwyer",
-      "text": "Quickly, Macklin!",
+      "text": "I don’t know! Get back to the main control room ASAP and see what you can figure out!",
       "animation": "PhoneListen",
       "animationLayer": 2
     }

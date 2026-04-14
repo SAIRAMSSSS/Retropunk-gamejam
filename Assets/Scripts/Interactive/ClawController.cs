@@ -15,16 +15,11 @@ public class ClawController : MonoBehaviour
     Vector2 _upperCorner;
     [SerializeField]
     Vector2 _lowerCorner;
-    [Header("Sounds")]
-    [SerializeField]
-    AudioClip _moveSound;
-    [SerializeField]
-    AudioClip _garbSound;
 
     ClawInput _input;
     Animator _clawAnimator;
     Animator _stretchAnimator;
-    AudioSource _clawAudioPlayer;
+    SFXController _SFXPlayer;
 
     readonly float _grabDistance = 8f;
     readonly float _placeY = 10f;
@@ -44,7 +39,7 @@ public class ClawController : MonoBehaviour
     {
         _input = GetComponent<ClawInput>();
         _verticalPosition = transform.position.y - _grabDistance;
-        _clawAudioPlayer = GetComponent<AudioSource>();
+        _SFXPlayer = GetComponent<SFXController>();
         _clawAnimator = transform.GetChild(0).GetComponent<Animator>();
         _stretchAnimator = transform.GetChild(1).GetComponent<Animator>();
     }
@@ -58,17 +53,20 @@ public class ClawController : MonoBehaviour
         {
             _goingDown = true;
             _grabbing = true;
+            _SFXPlayer.PlaySound("Reaching");
             _verticalPosition = transform.position.y + _grabDistance;
         }
 
         if (!_grabbing && !_moving && !_isHolding && _chosenPipe.CanMove() && _input.RotateClockwise)
         {
             _chosenPipe.Rotate(1);
+            _SFXPlayer.PlaySound("Rotate");
         }
 
         if (!_grabbing && !_moving && !_isHolding && _chosenPipe.CanMove() && _input.RotateCounterclockwise)
         {
             _chosenPipe.Rotate(-1);
+            _SFXPlayer.PlaySound("Rotate");
         }
 
         if (_grabbing)
@@ -78,6 +76,7 @@ public class ClawController : MonoBehaviour
             transform.position = pos;
             if (Mathf.Approximately(pos.y, _verticalPosition))
             {
+                _SFXPlayer.StopSound();
                 if (_goingDown)
                 {
                     //play claw animation
@@ -105,10 +104,11 @@ public class ClawController : MonoBehaviour
         float moveToZ = Mathf.Clamp(transform.position.y + _input.Move.y, _lowerCorner.y, _upperCorner.y);
         transform.position += new Vector3(moveToX, transform.position.y, moveToZ) * Time.deltaTime;
         bool move = !Mathf.Approximately(transform.position.z, moveToZ);
-        if(move)
+        if(move&&!_moving)
         {
-
+            _SFXPlayer.PlaySound("Movement");
         }
+        _moving = move;
     }
     /// <summary>
     /// Highlights a pipe under the claw
@@ -152,6 +152,7 @@ public class ClawController : MonoBehaviour
         _grabedPipe.transform.SetParent(_holdPoint);
         transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
         _verticalPosition = transform.position.y + _grabDistance;
+        _SFXPlayer.PlaySound("Reaching");
     }
     /// <summary>
     /// Dissconnects a pipe from the claw
@@ -164,5 +165,7 @@ public class ClawController : MonoBehaviour
         pos.y = _placeY;
         _grabedPipe.transform.position = pos;
         _verticalPosition = transform.position.y + _grabDistance;
+        _SFXPlayer.PlaySound("Reaching");
+
     }
 }
