@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -29,6 +28,7 @@ public class PlayerController : MonoBehaviour
     PlayerInput _input;
     NavMeshAgent _navAgent;
     Animator _animator;
+    SFXController _SFXPlayer;
 
     public bool HasPickUp { get; private set; }
     public InteractionObject PickedUpObject { get; set; }
@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
         _input = GetComponent<PlayerInput>();
         _animator = GetComponent<Animator>();
         _navAgent = GetComponent<NavMeshAgent>();
+        _SFXPlayer = GetComponent<SFXController>();
     }
 
     void Update()
@@ -164,7 +165,7 @@ public class PlayerController : MonoBehaviour
     /// Rotates towards an interactive object if interacts
     /// </summary>
     /// <returns></returns>
-    IEnumerator RotateTowardsInteractiveObject(Action interaction)
+    IEnumerator RotateTowardsInteractiveObject(System.Action interaction)
     {
         Vector3 direction = (_interactionZone.CurrentObject.transform.position - transform.position).normalized;
         direction.y = 0;
@@ -229,5 +230,10 @@ public class PlayerController : MonoBehaviour
     public void Interact()
     {
         _interactionZone.CurrentObject?.PerformActions();
+    }
+
+    public void PlayFootstep()
+    {
+        _SFXPlayer.PlaySound($"Metal - Option_{Random.Range(1, 3)}");
     }
 }

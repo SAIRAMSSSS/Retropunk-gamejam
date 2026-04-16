@@ -46,6 +46,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ec37752b26a6643848e8b00f6e09f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  _backgroundInitialMusic:
+  - {fileID: 8300000, guid: 179c4776a2a5ca346be4e6c1a03d346b, type: 3}
+  - {fileID: 8300000, guid: 9fb10f5096969b6418b74135573a98ca, type: 3}
+  - {fileID: 8300000, guid: d715f4d9cbfe9c9478f6fa501315413f, type: 3}
+  - {fileID: 8300000, guid: 5267ff11e0e6bd14aab47e1360e7a595, type: 3}
+  - {fileID: 8300000, guid: 343444119510aac4b9b9b59ba934894e, type: 3}
+  - {fileID: 8300000, guid: 6fde17d0b920c5644bade5126c3ec82b, type: 3}
+  - {fileID: 8300000, guid: c852a42bc471b8f4d81959784bcef91e, type: 3}
+  _backgroundRemainderMusic:
+  - {fileID: 8300000, guid: dcd06eef1d7424140a4252f900cc1a3b, type: 3}
+  - {fileID: 8300000, guid: 88334ba213d29b54a9adf03a738455f9, type: 3}
+  - {fileID: 8300000, guid: 328812fd31964e94c833a530eb2ae16a, type: 3}
+  - {fileID: 8300000, guid: 08e44aac52452a146b7685ff9d0a92f3, type: 3}
+  - {fileID: 8300000, guid: 9286b186b1af0e949b866eb879b12b32, type: 3}
+  - {fileID: 8300000, guid: 475a2b9f66d913a4588efaf998f7a1d7, type: 3}
+  - {fileID: 8300000, guid: a5a505510376c5f4d80ed6d141b7d03d, type: 3}
 --- !u!82 &4437219347310867793
 AudioSource:
   m_ObjectHideFlags: 0
@@ -55,20 +71,20 @@ AudioSource:
   m_GameObject: {fileID: 4624286819809396916}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -950198839311588225, guid: f4cad519af997d744828943422bdf611, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0

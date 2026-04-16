@@ -10,14 +10,23 @@ public class GameManager : MonoBehaviour
 
     [Inject]
     LevelManager _levelManager;
+    [Inject]
+    AudioManager _audioManager;
+    SFXController _SFXPlayer;
 
     public bool AllPuzzlesCompleted => _completedRooms.All(r => r);
     readonly string _gameOverCutsceneName = "GameOver";
+    readonly string _endCutsceneName = "Ending_MainDrag";
 
     bool[] _completedRooms = new bool[4];
     bool _timerStarted = false;
     int _timerMinutes = 45;
     float _timerSeconds = 0f;
+
+    private void Start()
+    {
+        _SFXPlayer = GetComponent<SFXController>();
+    }
     /// <summary>
     /// A puzzle in a room is completed
     /// </summary>
@@ -25,6 +34,20 @@ public class GameManager : MonoBehaviour
     public void CompleteRoom(int rooomIndex)
     {
         _completedRooms[rooomIndex] = true;
+        _SFXPlayer.PlaySound("Complete");
+
+        if (_completedRooms.All(r => r))
+        {
+            _timerStarted = false;
+            _timerText.gameObject.SetActive(false);
+            StartCoroutine(_audioManager.StartNewLevelMusic(5));
+            _levelManager.PlayCutscene(_endCutsceneName);
+        }
+    }
+
+    public void WrongAnswerPuzzle()
+    {
+        _SFXPlayer.PlaySound("Wrong");
     }
 
     public void StartTimer()

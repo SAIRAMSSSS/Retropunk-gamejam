@@ -70,6 +70,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.46590674
+        functionName: PlaySound
+        data: Place
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.9164644
         functionName: TurnOffUpperLayer
         data: 

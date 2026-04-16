@@ -5,7 +5,9 @@ public class SoundLever : MonoBehaviour
     [SerializeField]
     AudioClip[] _tones;
     [SerializeField]
-    int _rightToneIndex;
+    AudioClip _leverMoveSound;
+    [SerializeField]
+    int _correctToneIndex;
 
     AudioSource _audioPlayer;
 
@@ -21,6 +23,7 @@ public class SoundLever : MonoBehaviour
     /// <param name="index">snap point index</param>
     public void SnapPoint(int index)
     {
+        _audioPlayer.PlayOneShot(_leverMoveSound);
         _chosenToneIndex = index;
         PlayTone(index);
     }
@@ -40,7 +43,7 @@ public class SoundLever : MonoBehaviour
     /// </summary>
     public void PlayRightTone()
     {
-        PlayTone(_rightToneIndex);
+        PlayTone(_correctToneIndex);
     }
     /// <summary>
     /// Checks if the chosen snap point is correct
@@ -48,6 +51,6 @@ public class SoundLever : MonoBehaviour
     /// <returns></returns>
     public bool CheckChosenTone()
     {
-        return _rightToneIndex == _chosenToneIndex;
+        return _correctToneIndex == _chosenToneIndex;
     }
 }

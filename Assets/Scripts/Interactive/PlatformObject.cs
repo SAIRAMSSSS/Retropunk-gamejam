@@ -46,13 +46,8 @@ public class PlatformObject : InteractionObject
         _interactionUI.Show(transform, _interactionText,_pickupOffset);
         _placed = true;
         _placedObject = _player.PickedUpObject;
-        Debug.Log($"Place called. Listeners before: {_interaction?.GetPersistentEventCount()}");
-
         _interaction.RemoveListener(Place);
-        Debug.Log($"After RemoveListener(Place): {_interaction?.GetPersistentEventCount()}");
-
         _interaction.AddListener(PickUp);
-        Debug.Log($"After AddListener(PickUp): {_interaction?.GetPersistentEventCount()}");
     }
 
     public void PickUp()

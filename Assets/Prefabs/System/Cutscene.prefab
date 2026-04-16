@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9019295291418326885}
   - component: {fileID: 19995982441259790}
   - component: {fileID: 7183038028138785908}
+  - component: {fileID: 5666671055663366721}
   m_Layer: 0
   m_Name: Cutscene
   m_TagString: Untagged
@@ -51,7 +52,7 @@ PlayableDirector:
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: -362725271610597041, guid: b7b072d4c7ccdd74fb47ede77e061fc7, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 0}
   - key: {fileID: -443289518838951559, guid: b7b072d4c7ccdd74fb47ede77e061fc7, type: 2}
     value: {fileID: 0}
@@ -59,15 +60,15 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 7837676851862971122, guid: b7b072d4c7ccdd74fb47ede77e061fc7, type: 2}
     value: {fileID: 9019295291418326885}
-  - key: {fileID: 1870099263882292245, guid: 1a23d3c2709cfcb46b5e4c0e6b5a85c1, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 0}
-  - key: {fileID: -8181330348410089614, guid: 1a23d3c2709cfcb46b5e4c0e6b5a85c1, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 0}
   - key: {fileID: 3679540788175277808, guid: 1a23d3c2709cfcb46b5e4c0e6b5a85c1, type: 2}
     value: {fileID: 0}
   - key: {fileID: 4673638419614650339, guid: 1a23d3c2709cfcb46b5e4c0e6b5a85c1, type: 2}
     value: {fileID: 9019295291418326885}
-  - key: {fileID: -3322710899006923191, guid: 360003567bffd054eacacd3992553842, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 0}
   - key: {fileID: -8278824183650565563, guid: 360003567bffd054eacacd3992553842, type: 2}
     value: {fileID: 9019295291418326885}
@@ -89,6 +90,7 @@ MonoBehaviour:
   _cutsceneCamera: {fileID: 0}
   _timelines:
   - {fileID: 11400000, guid: a705df5257e671c4b9d391aee8cea3ed, type: 2}
+  - {fileID: 11400000, guid: 1a23d3c2709cfcb46b5e4c0e6b5a85c1, type: 2}
 --- !u!114 &9019295291418326885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,6 +107,7 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: 432cd0486ff7871459811090607ddd31, type: 2}
     - {fileID: 11400000, guid: 2ae27babd96e2434886498813976897a, type: 2}
+    - {fileID: 11400000, guid: a1a23d5903154214883f598d671a6a55, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -130,6 +133,32 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5836630451824352848}
+          m_TargetAssemblyTypeName: CutsceneManager, Assembly-CSharp
+          m_MethodName: SetNextCutscene
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Ending_MainControlRoom
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 5836630451824352848}
+          m_TargetAssemblyTypeName: CutsceneManager, Assembly-CSharp
+          m_MethodName: ContinueInNextLevel
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 5
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -244,3 +273,100 @@ MonoBehaviour:
     DissipationDistance: 300
     PropagationSpeed: 343
   DefaultVelocity: {x: 0, y: -1, z: 0}
+--- !u!82 &5666671055663366721
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807424578389530323}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -488564163853300819, guid: f4cad519af997d744828943422bdf611, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 100
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

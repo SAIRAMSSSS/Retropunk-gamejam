@@ -722,6 +722,7 @@ GameObject:
   - component: {fileID: 5014364295543351373}
   - component: {fileID: 8014307887637731170}
   - component: {fileID: 1939885138670508369}
+  - component: {fileID: 7081048548627067322}
   m_Layer: 5
   m_Name: ScreenCanvas
   m_TagString: Untagged
@@ -741,11 +742,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6168663779405572102}
   - {fileID: 1865508081699405280}
   - {fileID: 6228338039636159144}
   - {fileID: 8147628089959911685}
   - {fileID: 7436369645626940973}
+  - {fileID: 6168663779405572102}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -772,7 +773,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
   m_UseReflectionProbes: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -892,6 +893,28 @@ MonoBehaviour:
   _useSceneContext: 0
   _context: {fileID: 749571569512889540, guid: 90620751ee48de143bd7a07ed49afc64, type: 3}
   _bindType: 0
+--- !u!95 &7081048548627067322
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5413459015088315999}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6285935096795334422
 GameObject:
   m_ObjectHideFlags: 0

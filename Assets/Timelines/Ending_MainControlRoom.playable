@@ -393,7 +393,7 @@ MonoBehaviour:
   m_Time: 20.233333333333334
   m_Retroactive: 0
   m_EmitOnce: 0
-  m_Asset: {fileID: 11400000, guid: 85ca4afbacbeb5c47ac9e4ced8e476b5, type: 2}
+  m_Asset: {fileID: 11400000, guid: 2ae27babd96e2434886498813976897a, type: 2}
 --- !u!74 &8539459376455884648
 AnimationClip:
   m_ObjectHideFlags: 0
