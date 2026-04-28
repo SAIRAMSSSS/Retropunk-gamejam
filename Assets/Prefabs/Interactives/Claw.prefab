@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1350459223076992245}
   - component: {fileID: 1471759353410457162}
   - component: {fileID: 8286242674670237625}
+  - component: {fileID: 4797337668250405637}
   m_Layer: 0
   m_Name: Claw
   m_TagString: Untagged
@@ -128,9 +129,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClawController
   _clawCamera: {fileID: 0}
+  _holdPoint: {fileID: 0}
+  _console: {fileID: 0}
   _upperCorner: {x: 0, y: 0}
   _lowerCorner: {x: 0, y: 0}
-  _holdPoint: {fileID: 0}
 --- !u!114 &1471759353410457162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,3 +175,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2d42b9bb5a8fc40a4d63d88704274f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClawInput
+--- !u!114 &4797337668250405637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4921350897021375288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fedef518739f1b449ae1fc58d166e721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveDataObject
+  DataType: Place
+  DataId: Claw

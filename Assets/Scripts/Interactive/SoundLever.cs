@@ -9,6 +9,8 @@ public class SoundLever : MonoBehaviour
     [SerializeField]
     int _correctToneIndex;
 
+    public int LeverTone => _chosenToneIndex;
+
     AudioSource _audioPlayer;
 
     int _chosenToneIndex;
@@ -53,4 +55,10 @@ public class SoundLever : MonoBehaviour
     {
         return _correctToneIndex == _chosenToneIndex;
     }
+
+    public void SetLever(int tone)
+    {
+        _chosenToneIndex = tone;
+    }
+
 }

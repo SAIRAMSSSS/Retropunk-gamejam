@@ -14,7 +14,7 @@ public class MainMenuManager : MonoBehaviour
 
     IEnumerator LoadScene()
     {
-        yield return StartCoroutine(_UI.DarkenScreen(0, 1));
+        yield return StartCoroutine(_UI.DarkenScreen(1));
         SceneManager.LoadScene(1,LoadSceneMode.Single);
     }
 

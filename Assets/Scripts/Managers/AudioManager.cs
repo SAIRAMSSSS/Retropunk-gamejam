@@ -1,19 +1,23 @@
-﻿using System.Collections;
-using Unity.VisualScripting;
+﻿using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
     [SerializeField]
+    AudioSource _initialBackgroundMusicPlayer;
+    [SerializeField]
+    AudioSource _remainderBackgroundMusicPlayer;
+    [SerializeField]
     AudioClip[] _backgroundInitialMusic;
     [SerializeField]
     AudioClip[] _backgroundRemainderMusic;
 
-    AudioSource _backgroundMusicPlayer;
+    //AudioSource _backgroundMusicPlayer;
 
     readonly float _fadeDuration = 1f;
 
-    int _musicNum = 1;
+    int _musicNum = 3;
 
     void Awake()
     {
@@ -22,26 +26,22 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        _backgroundMusicPlayer = GetComponent<AudioSource>();
-
-        StartCoroutine(SwitchMusic());
+        SwitchMusic();
     }
 
 
-    IEnumerator SwitchMusic()
+    void SwitchMusic()
     {
-        _backgroundMusicPlayer.clip = _backgroundInitialMusic[_musicNum];
-        _backgroundMusicPlayer.loop = false;
-        _backgroundMusicPlayer.Play();
+        _initialBackgroundMusicPlayer.clip = _backgroundInitialMusic[_musicNum];
+        _initialBackgroundMusicPlayer.Play();
 
-        yield return new WaitForSeconds(_backgroundInitialMusic[_musicNum].length);
+        double nextStartTime = AudioSettings.dspTime + _backgroundInitialMusic[_musicNum].length;
 
-        _backgroundMusicPlayer.clip = _backgroundRemainderMusic[_musicNum];
-        _backgroundMusicPlayer.loop = true;
-        _backgroundMusicPlayer.Play();
+        _remainderBackgroundMusicPlayer.clip = _backgroundRemainderMusic[_musicNum];
+        _remainderBackgroundMusicPlayer.PlayScheduled(nextStartTime);
     }
     /// <summary>
-    /// Smoothly turns on the next background music
+    /// Smoothly turns on  next background music
     /// </summary>
     /// <param name="index"></param>
     /// <returns></returns>
@@ -49,18 +49,12 @@ public class AudioManager : MonoBehaviour
     {
         StopAllCoroutines();
         _musicNum = index + 1;
-        float fadeOutTime = 0;
-
-        while (fadeOutTime < _fadeDuration)
-        {
-            fadeOutTime += Time.deltaTime;
-            float delta = fadeOutTime / _fadeDuration;
-            _backgroundMusicPlayer.volume = Mathf.Lerp(1, 0, delta);
-            yield return null;
-        }
-        //stops the previous music
-        _backgroundMusicPlayer.Stop();
-        _backgroundMusicPlayer.volume = 1;
-        StartCoroutine(SwitchMusic());
+        //turns off previous music
+        AudioSource audio = _initialBackgroundMusicPlayer.isPlaying ? _initialBackgroundMusicPlayer : _remainderBackgroundMusicPlayer;
+        yield return audio.DOFade(0, _fadeDuration);
+        //stops previous music
+        audio.Stop();
+        audio.volume = 1;
+        SwitchMusic();
     }
 }

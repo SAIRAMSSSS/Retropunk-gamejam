@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 709298232808872569}
   - component: {fileID: 2107908160922964068}
   - component: {fileID: 5836630451824352848}
+  - component: {fileID: 1483452433118296381}
   - component: {fileID: 9019295291418326885}
+  - component: {fileID: 7624749761906319594}
   - component: {fileID: 19995982441259790}
   - component: {fileID: 7183038028138785908}
   - component: {fileID: 5666671055663366721}
@@ -86,11 +88,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628b4e8de076b5c409e9843ccf30078f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneManager
-  _startOnTrigger: 0
   _cutsceneCamera: {fileID: 0}
   _timelines:
   - {fileID: 11400000, guid: a705df5257e671c4b9d391aee8cea3ed, type: 2}
   - {fileID: 11400000, guid: 1a23d3c2709cfcb46b5e4c0e6b5a85c1, type: 2}
+--- !u!114 &1483452433118296381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807424578389530323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 888baa2f94e2f4a45b23349aac193f8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverCutscene
 --- !u!114 &9019295291418326885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,8 +138,8 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 5836630451824352848}
-          m_TargetAssemblyTypeName: CutsceneManager, Assembly-CSharp
+        - m_Target: {fileID: 1483452433118296381}
+          m_TargetAssemblyTypeName: GameOverCutscene, Assembly-CSharp
           m_MethodName: GameOver
           m_Mode: 1
           m_Arguments:
@@ -163,6 +176,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &7624749761906319594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807424578389530323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0ef11959df33249a75e2eb0dc76099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleDiscriptionCutscene
+  _startOnTrigger: 1
 --- !u!65 &19995982441259790
 BoxCollider:
   m_ObjectHideFlags: 0

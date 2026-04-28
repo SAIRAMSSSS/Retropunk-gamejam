@@ -74,7 +74,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 375
@@ -454,7 +454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SFXController
   _sounds:
-  - {fileID: 8300000, guid: 2e7d527e38d7df840bbca8d6e90bb600, type: 3}
-  - {fileID: 8300000, guid: e96d3527e95ae004a846d997371c8240, type: 3}
+  - {fileID: 8300000, guid: 0184844bcc5c6f541bfa38b56939b5c0, type: 3}
+  - {fileID: 8300000, guid: 7c345e4069f10ab44a77cdc67a4f0f75, type: 3}
   - {fileID: 8300000, guid: 325e844714d9f104e93497c001238763, type: 3}
   - {fileID: 8300000, guid: 6ae429fe818eee44ca30964b2e60a2c4, type: 3}

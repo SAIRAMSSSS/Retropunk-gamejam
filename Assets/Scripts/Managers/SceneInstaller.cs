@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using Zenject;
+﻿using Zenject;
 
 public class SceneInstaller : MonoInstaller<SceneInstaller>
 {
@@ -34,6 +33,18 @@ public class SceneInstaller : MonoInstaller<SceneInstaller>
             .AsSingle();
 
         Container.Bind<DialogueManager>()
+            .FromComponentInHierarchy()
+            .AsSingle();
+
+        Container.Bind<CutoutShaderController>()
+            .FromComponentInHierarchy()
+            .AsSingle();
+
+        Container.Bind<CutsceneManager>()
+            .FromComponentInHierarchy()
+            .AsSingle();
+
+        Container.Bind<PlayerSpawner>()
             .FromComponentInHierarchy()
             .AsSingle();
     }

@@ -34,30 +34,40 @@ public class PlatformObject : InteractionObject
         return _canInteract && (_player.HasPickUp && !_placed || !_player.HasPickUp && _placed);
     }
 
-    public void Place()
+    public void PlaceObject(LiftObject obj)
     {
-        _player.PickedUpObject.PerformActions();
-        _player.PickedUpObject.transform.SetParent(_placePoint);
-        (_player.PickedUpObject as LiftObject).Place();
-        (_player.PickedUpObject as LiftObject).SetScale(transform.lossyScale);
+        //connects a lift object to the platform
+        _placed = true;
+        _placedObject = obj;
+        obj.PerformActions();
+        obj.transform.SetParent(_placePoint);
+        obj.SetPlatform(this);
+        //changes interaction name
         _interactionName = _pickupName;
         _interactionText = _pickupText;
         _interactonTextOffset = _pickupOffset;
-        _interactionUI.Show(transform, _interactionText,_pickupOffset);
-        _placed = true;
-        _placedObject = _player.PickedUpObject;
+        _interactionUI.Show(transform, _interactionText, _pickupOffset);
+        //changes interaction event
         _interaction.RemoveListener(Place);
         _interaction.AddListener(PickUp);
     }
 
+    public void Place()
+    {
+        PlaceObject(_player.PickedUpObject as LiftObject);
+    }
+
     public void PickUp()
     {
+        //changes interaction name
         _interactionName = _placeName;
         _interactionText = _placeText;
         _interactonTextOffset = _placeOffset;
         _interactionUI.Show(transform, _interactionText,_placeOffset);
+        //disconnects a lift object
         _placed = false;
         _player.PickedUpObject = _placedObject;
+        //changes interaction event
         _interaction.RemoveListener(PickUp);
         _interaction.AddListener(Place);
     }

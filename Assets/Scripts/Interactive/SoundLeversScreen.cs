@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class SoundLeversScreen : MonoBehaviour
@@ -7,6 +8,8 @@ public class SoundLeversScreen : MonoBehaviour
     SoundLightSignalPanel _soundLightSignalPanel;
     [SerializeField]
     ConsoleObject _console;
+
+    public int[] LeversTones => _levers.Select(l => l.LeverTone).ToArray();
 
     SoundLever[] _levers;
     SFXController _SFXPlayer;
@@ -52,6 +55,14 @@ public class SoundLeversScreen : MonoBehaviour
     {
         yield return new WaitForSeconds(10f);
         ExitConsole();
-        _console.CompletePuzzle(1);
+        _console.CompletePuzzle(LevelNames.LifeSupportRoom);
+    }
+
+    public void SetLevers(int[] leverTones)
+    {
+        for (int i = 0;i < leverTones.Length;i++)
+        {
+            _levers[i].SetLever(leverTones[i]);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -21,10 +22,13 @@ public class ClawController : MonoBehaviour
     Animator _stretchAnimator;
     SFXController _SFXPlayer;
 
+    readonly int _hashGrab = Animator.StringToHash("Grab");
+    readonly int _hashRelease = Animator.StringToHash("Release");
+
     readonly float _grabDistance = 8f;
     readonly float _placeY = 10f;
     readonly float _moveSpeed = 5f;
-    readonly float _grabSpeed = 5f;
+    readonly float _verticalMoveTime = 1.5f;
 
     bool _moving = false;
     bool _goingDown;
@@ -38,7 +42,6 @@ public class ClawController : MonoBehaviour
     void Start()
     {
         _input = GetComponent<ClawInput>();
-        _verticalPosition = transform.position.y - _grabDistance;
         _SFXPlayer = GetComponent<SFXController>();
         _clawAnimator = transform.GetChild(0).GetComponent<Animator>();
         _stretchAnimator = transform.GetChild(1).GetComponent<Animator>();
@@ -54,7 +57,9 @@ public class ClawController : MonoBehaviour
             _goingDown = true;
             _grabbing = true;
             _SFXPlayer.PlaySound("Reaching");
-            _verticalPosition = transform.position.y + _grabDistance;
+            _verticalPosition = transform.position.y - _grabDistance;
+            //lowe
+
         }
 
         if (!_grabbing && !_moving && !_isHolding && _chosenPipe.CanMove() && _input.RotateClockwise)
@@ -68,32 +73,38 @@ public class ClawController : MonoBehaviour
             _chosenPipe.Rotate(-1);
             _SFXPlayer.PlaySound("Rotate");
         }
+    }
 
-        if (_grabbing)
-        {
-            Vector3 pos = transform.position;
-            pos.y = Mathf.MoveTowards(pos.y, _verticalPosition, Time.deltaTime * _grabSpeed);
-            transform.position = pos;
-            if (Mathf.Approximately(pos.y, _verticalPosition))
+    public void VerticalMovement()
+    {
+        transform.DOMoveY(_verticalPosition, _verticalMoveTime)
+            .SetEase(Ease.Linear)
+            .OnComplete(() =>
             {
                 _SFXPlayer.StopSound();
                 if (_goingDown)
                 {
-                    //play claw animation
-
+                    _goingDown = false;
+                    _verticalPosition = transform.position.y + _grabDistance;
+                    if (_isHolding)
+                    {
+                        //_animator.SetTrigger(_hashRelease);
+                    }
+                    else
+                    {
+                        //_animator.SetTrigger(_hashGrab);
+                    }
                 }
                 else
                 {
                     _grabbing = false;
-                    _verticalPosition = transform.position.y - _grabDistance;
-                    if (_grabedPipe.TryConnectAllPipes())
+                    if (!_isHolding && _grabedPipe.TryConnectAllPipes())
                     {
-                        _console.CompletePuzzle(2);
+                        _console.CompletePuzzle(LevelNames.WaterSupplyRoom);
                         ExitGame();
                     }
                 }
-            }
-        }
+            });
     }
     /// <summary>
     /// Moves the claw
@@ -104,7 +115,7 @@ public class ClawController : MonoBehaviour
         float moveToZ = Mathf.Clamp(transform.position.y + _input.Move.y, _lowerCorner.y, _upperCorner.y);
         transform.position += new Vector3(moveToX, transform.position.y, moveToZ) * Time.deltaTime;
         bool move = !Mathf.Approximately(transform.position.z, moveToZ);
-        if(move&&!_moving)
+        if (move && !_moving)
         {
             _SFXPlayer.PlaySound("Movement");
         }
@@ -166,6 +177,5 @@ public class ClawController : MonoBehaviour
         _grabedPipe.transform.position = pos;
         _verticalPosition = transform.position.y + _grabDistance;
         _SFXPlayer.PlaySound("Reaching");
-
     }
 }

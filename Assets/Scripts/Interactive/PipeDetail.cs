@@ -25,7 +25,11 @@ public class PipeDetail : MonoBehaviour
         transform.Rotate(0, direction * _rotationAngle, 0, Space.Self);
         TryConnectAllPipes();
     }
-
+    /// <summary>
+    /// Recursively checks if all pipes are connected from start to end
+    /// </summary>
+    /// <param name="previousPipe"></param>
+    /// <returns></returns>
     public bool TryConnectAllPipes(PipeDetail previousPipe = null)
     {
         if(_pipeType == PipeType.End)

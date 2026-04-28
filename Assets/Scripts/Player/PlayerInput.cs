@@ -54,6 +54,9 @@ public class PlayerInput : MonoBehaviour
     public void LockInput(bool enable)
     {
         _inputLocked = enable;
+        _click = false;
+        _doubleClick = false;
+        _interact = false;
     }
     /// <summary>
     /// Enables or disables an interaction with an object and sets an interaction functions

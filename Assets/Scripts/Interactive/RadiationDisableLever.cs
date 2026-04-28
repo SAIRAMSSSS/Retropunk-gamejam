@@ -17,7 +17,7 @@ public class RadiationDisableLever : InteractionObject
         {
             panel.enabled = false;
             _canInteract = false;
-            _gameManager.CompleteRoom(3);
+            _gameManager.CompleteRoom(LevelNames.RadiationShieldingMatrix);
         }
     }
 }

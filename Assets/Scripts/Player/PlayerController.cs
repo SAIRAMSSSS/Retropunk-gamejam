@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -23,7 +24,6 @@ public class PlayerController : MonoBehaviour
     readonly int _hashCanMove = Animator.StringToHash("CanMove");
     readonly int _hashPickup = Animator.StringToHash("Pickup");
     readonly int _hashLever = Animator.StringToHash("Lever");
-    readonly int _hashConsole = Animator.StringToHash("Console");
 
     PlayerInput _input;
     NavMeshAgent _navAgent;
@@ -38,7 +38,8 @@ public class PlayerController : MonoBehaviour
     readonly float _liftSpeed = 2f;
     readonly float _idleAnimationTime = 5f;
     readonly int _idleAnimationsNum = 3;
-    readonly float _weightChangeTime = 5f;
+    readonly float _weightChangeTime = 1.5f;
+    readonly int _upperBodyLayerIndex = 1;
 
     float _idleAnimationTimer;
     bool _canMove = true;
@@ -54,7 +55,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        _animator.SetLayerWeight(1, Mathf.Lerp(_animator.GetLayerWeight(1), _upperBodyLayerWeight, Time.deltaTime * _weightChangeTime));
+        DOVirtual.Float(
+        _animator.GetLayerWeight(_upperBodyLayerIndex),
+        _upperBodyLayerWeight,
+        _weightChangeTime,
+        (weight) =>
+        {
+            _animator.SetLayerWeight(_upperBodyLayerIndex, weight);
+        });
         _canMove = _animator.GetBool(_hashCanMove);
         //moves player
         if (_input.Click && _canMove)
@@ -95,7 +103,7 @@ public class PlayerController : MonoBehaviour
                     {
                         _upperBodyLayerWeight = 1;
                         _animator.SetTrigger(_hashPickup);
-                        _interactionZone.CurrentObject.PerformActions();
+                        Interact();
                         ConnectLiftObject();
                     }));
                     break;
@@ -108,7 +116,7 @@ public class PlayerController : MonoBehaviour
                     StartCoroutine(RotateTowardsInteractiveObject(() =>
                     {
                         _animator.SetTrigger(_hashLever);
-                        _interactionZone.CurrentObject.PerformActions();
+                        Interact();
                     }));
                     break;
                 //places on a platform
@@ -116,21 +124,14 @@ public class PlayerController : MonoBehaviour
                     StartCoroutine(RotateTowardsInteractiveObject(() =>
                     {
                         _animator.SetTrigger(_hashPlace);
-                        _interactionZone.CurrentObject.PerformActions();
+                        Interact();
                         HasPickUp = false;
                         PickedUpObject = null;
                         _upperBodyLayerWeight = 0f;
                     }));
                     break;
-                case "Console":
-                    StartCoroutine(RotateTowardsInteractiveObject(() =>
-                    {
-                        _animator.SetTrigger(_hashConsole);
-                        _interactionZone.CurrentObject.PerformActions();
-                    }));
-                    break;
                 default:
-                    _interactionZone.CurrentObject.PerformActions();
+                    Interact();
                     break;
             }
         }
@@ -144,13 +145,13 @@ public class PlayerController : MonoBehaviour
             }
         }
         //sets different idle animations
-        if (_navAgent.velocity.magnitude < 0.1 && _animator.GetBool(_hashIdleAnimationEnded) &&!HasPickUp)
+        if (_navAgent.velocity.magnitude < 0.1 && _animator.GetBool(_hashIdleAnimationEnded) && !HasPickUp)
         {
             _idleAnimationTimer += Time.deltaTime;
             if (_idleAnimationTimer > _idleAnimationTime)
             {
                 _idleAnimationTimer = 0f;
-                _animator.SetInteger(_hashIdleNum,UnityEngine.Random.Range(0, _idleAnimationsNum));
+                _animator.SetInteger(_hashIdleNum, Random.Range(0, _idleAnimationsNum));
                 _animator.SetTrigger(_hashSwitchIdle);
             }
         }
@@ -235,5 +236,21 @@ public class PlayerController : MonoBehaviour
     public void PlayFootstep()
     {
         _SFXPlayer.PlaySound($"Metal - Option_{Random.Range(1, 3)}");
+    }
+
+    public void StopMovement()
+    {
+        _navAgent.ResetPath();
+        _animator.SetFloat(_hashSpeed, 0f);
+    }
+
+    private void OnEnable()
+    {
+        _input?.LockInput(false);
+    }
+
+    private void OnDisable()
+    {
+        _input?.LockInput(true);
     }
 }

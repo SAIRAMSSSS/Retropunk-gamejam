@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -23,7 +24,7 @@ public class DialogueManager : MonoBehaviour
     PlayableDirector _timeline;
 
     readonly float _charactersPerSecond = 33;
-    readonly float _weightSpeedChange = 10f;
+    readonly float _weightChangeTime = 0.8f;
 
     DialogueData[] _dialogueLines;
     int _lineIndex = 0;
@@ -43,11 +44,15 @@ public class DialogueManager : MonoBehaviour
     {
         if (_changeLayer)
         {
-            _animator.SetLayerWeight(_layerIndex, Mathf.Lerp(_animator.GetLayerWeight(_layerIndex), _layerValue, Time.deltaTime * _weightSpeedChange));
-            if (_animator.GetLayerWeight(_layerIndex) == _layerValue)
-            {
-                _changeLayer = false;
-            }
+            _changeLayer = false;
+            DOVirtual.Float(
+                _animator.GetLayerWeight(_layerIndex),
+                _layerValue,
+                _weightChangeTime,
+                (weight) =>
+                {
+                    _animator.SetLayerWeight(_layerIndex, weight);
+                });
         }
 
         if (_dialogueLayout.activeSelf && _input.Click)
@@ -72,6 +77,7 @@ public class DialogueManager : MonoBehaviour
     /// <param name="dialogueName"></param>
     public void StartDialogue(string dialogueName)
     {
+        _input.LockInput(false);
         _timeline = GameObject.Find("Cutscene").GetComponent<PlayableDirector>();
         _timeline.Pause();
         Dialogue dialogue = _parser.LoadDialogue(dialogueName);
@@ -113,6 +119,7 @@ public class DialogueManager : MonoBehaviour
         {
             _animator.SetTrigger("HangUp");
         }
+        _input.LockInput(true);
         _lineIndex = 0;
         _dialogueLayout.SetActive(false);
         _timeline.Resume();

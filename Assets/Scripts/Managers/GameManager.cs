@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     SFXController _SFXPlayer;
 
     public bool AllPuzzlesCompleted => _completedRooms.All(r => r);
-    readonly string _gameOverCutsceneName = "GameOver";
     readonly string _endCutsceneName = "Ending_MainDrag";
 
     bool[] _completedRooms = new bool[4];
@@ -31,12 +30,15 @@ public class GameManager : MonoBehaviour
     /// A puzzle in a room is completed
     /// </summary>
     /// <param name="rooomIndex"></param>
-    public void CompleteRoom(int rooomIndex)
+    public void CompleteRoom(LevelNames room)
     {
-        _completedRooms[rooomIndex] = true;
+        if ((int)room <= _completedRooms.Length)
+            return;
+
+        _completedRooms[(int)room - 1] = true;
         _SFXPlayer.PlaySound("Complete");
 
-        if (_completedRooms.All(r => r))
+        if (AllPuzzlesCompleted)
         {
             _timerStarted = false;
             _timerText.gameObject.SetActive(false);
@@ -44,6 +46,8 @@ public class GameManager : MonoBehaviour
             _levelManager.PlayCutscene(_endCutsceneName);
         }
     }
+
+    public bool IsRoomComplete(int room) => _completedRooms[room];
 
     public void WrongAnswerPuzzle()
     {
@@ -58,6 +62,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        //updates timer
         if(_timerStarted)
         {
             if (_timerSeconds <= 0)
@@ -68,9 +73,7 @@ public class GameManager : MonoBehaviour
                 if(_timerMinutes < 0)
                 {
                     _timerText.gameObject.SetActive(false);
-                    var cutscene = _levelManager.GetCurrentCutscene();
-                    cutscene.SetTimeline(_gameOverCutsceneName);
-                    cutscene.StartGameOver();
+                    _levelManager.GetCurrentCutscene<GameOverCutscene>().StartGameOver();
                 }
             }
             _timerSeconds -= Time.deltaTime;

@@ -68,7 +68,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TeleportToScene
   _priority: 3
   _interactionText: Press E to exit a room
-  _interactionName: Trabsition
+  _interactionName: Transition
   _interactonTextOffset: 1
   _interaction:
     m_PersistentCalls:
@@ -85,4 +85,4 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _levelNumber: 0
+  _levelName: 0

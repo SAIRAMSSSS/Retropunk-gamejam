@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8927266582364528472}
   - component: {fileID: 1304503148969633376}
   - component: {fileID: 658705165155469816}
+  - component: {fileID: 7989931919458634779}
   m_Layer: 7
   m_Name: InteractuveShape
   m_TagString: Untagged
@@ -197,3 +198,17 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0
+--- !u!114 &7989931919458634779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4576895732001323364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fedef518739f1b449ae1fc58d166e721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveDataObject
+  DataType: Lift
+  DataId: Lift_

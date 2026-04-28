@@ -4,28 +4,33 @@ using UnityEngine;
 public class SoundLightSignalPanel : MonoBehaviour
 {
     [SerializeField]
-    Material[] _lightColors;
+    Color[] _lightColors;
     [SerializeField]
-    Material _defaultLight;
+    Color _defaultColor;
 
-    MeshRenderer[] _lights;
-
+    MeshRenderer[] _lightRenderers;
+    Light[] _lights;
     AudioSource _audioPlayer;
+    MaterialPropertyBlock _propertyBlock;
 
     readonly float _playSequenceRecoverTime = 10f;
 
     bool _playing = false;
     bool _canPlay = true;
-    float _playSequenceRecoverTimer = 0f;
+    float _playSequenceRecoverTimer = 5f;
 
     void Start()
     {
+        _propertyBlock = new MaterialPropertyBlock();
         _audioPlayer = GetComponent<AudioSource>();
-        _lights = new MeshRenderer[transform.childCount];
+        _lightRenderers = new MeshRenderer[transform.childCount];
+        _lights = new Light[transform.childCount];
 
         for (int i = 0; i < transform.childCount; i++)
         {
-            _lights[i] = transform.GetChild(i).GetComponent<MeshRenderer>();
+            Transform light = transform.GetChild(i);
+            _lightRenderers[i] = light.GetComponent<MeshRenderer>();
+            _lights[i] = light.GetChild(0).GetComponent<Light>();
         }
     }
 
@@ -58,11 +63,16 @@ public class SoundLightSignalPanel : MonoBehaviour
         _audioPlayer.Play();
         for (int i = 0; i < _lights.Length; i++)
         {
-            _lights[i].material = _lightColors[i];
+            _propertyBlock.SetColor("_BaseColor", _lightColors[i]);
+            _lightRenderers[i].SetPropertyBlock(_propertyBlock);
+            _lights[i].gameObject.SetActive(true);
+            _lights[i].color = _lightColors[i];
 
             yield return new WaitForSeconds(0.5f);
 
-            _lights[i].material = _defaultLight;
+            _propertyBlock.SetColor("_BaseColor", _defaultColor);
+            _lightRenderers[i].SetPropertyBlock(_propertyBlock);
+            _lights[i].gameObject.SetActive(false);
         }
         _playing = false;
     }

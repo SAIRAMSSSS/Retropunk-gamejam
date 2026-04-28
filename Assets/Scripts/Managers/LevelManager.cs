@@ -1,12 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
+
+public enum LevelNames
+{
+    Apartment,
+    EngineRoom,
+    LifeSupportRoom,
+    WaterSupplyRoom, 
+    RadiationShieldingMatrix,
+    MainControlRoom,
+    MainDrag
+}
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField]
-    GameObject[] _levels;
-
     [Inject]
     UIManager _UI;
     [Inject]
@@ -16,42 +26,32 @@ public class LevelManager : MonoBehaviour
     [Inject]
     DiContainer _container;
 
-    GameObject _currentLevel;
-    int _currentLevelIndex;
+    LevelNames _currentLevel;
 
     //readonly string _endCutsceneName = "Ending_MainDrag";
-    readonly int _mainDragIndex = 6;
 
-    private void Start()
+    public void SetNewLevel(LevelNames levelName)
     {
-        _currentLevel = _container.InstantiatePrefab(_levels[1]);
-    }
-
-    public void SetNewLevel(int levelIndex)
-    {
-        if (_currentLevel != null)
+        SceneManager.LoadScene(levelName.ToString());
+        if(LevelNames.MainDrag == levelName)
         {
-            Destroy(_currentLevel);
+            _container.Resolve<PlayerSpawner>().SetPlayerSpawnPosition((int)_currentLevel);
         }
-        _currentLevel = _container.InstantiatePrefab(_levels[levelIndex]);
-        if(levelIndex == _mainDragIndex)
-        {
-            _currentLevel.GetComponentInChildren<PlayerSpawner>().SetPlayerSpawnPosition(_currentLevelIndex);
-        }
-        _currentLevelIndex = levelIndex;
+        _currentLevel = levelName;
     }
     /// <summary>
     /// Darkens the screen, loads a new scene, and removes the blackout
     /// </summary>
-    /// <param name="levelIndex"></param>
+    /// <param name="levelName"></param>
     /// <returns></returns>
-    public IEnumerator LoadLevel(int levelIndex)
+    public IEnumerator LoadLevel(LevelNames levelName)
     {
         _player.LockInput(true);
-        yield return StartCoroutine(_UI.DarkenScreen(0, 1));
-        SetNewLevel(levelIndex);
-        StartCoroutine(_audioManager.StartNewLevelMusic(levelIndex));
-        yield return StartCoroutine(_UI.DarkenScreen(1, 0));
+        yield return StartCoroutine(_UI.DarkenScreen(1));
+        SetNewLevel(levelName);
+        yield return null;
+        StartCoroutine(_audioManager.StartNewLevelMusic((int)levelName));
+        yield return StartCoroutine(_UI.DarkenScreen(0));
         _player.LockInput(false);
         //if(levelIndex == _mainDragIndex && _gameManager.AllPuzzlesCompleted)
         //{
@@ -65,15 +65,15 @@ public class LevelManager : MonoBehaviour
     /// <param name="cutsceneName"></param>
     public void LoadLevelWithCutscene(int levelIndex, string cutsceneName)
     {
-        SetNewLevel(levelIndex);
+        SetNewLevel((LevelNames)levelIndex);
         PlayCutscene(cutsceneName);
     }
 
-    public CutsceneManager GetCurrentCutscene()=> _currentLevel.GetComponentInChildren<CutsceneManager>();
+    public T GetCurrentCutscene<T>()=> _container.Resolve<CutsceneManager>().GetComponent<T>();
 
     public void PlayCutscene(string cutsceneName)
     {
-        var cutscene = GetCurrentCutscene();
+        var cutscene = GetCurrentCutscene<CutsceneManager>();
         cutscene.SetTimeline(cutsceneName);
         cutscene.StartCutscene();
     }
